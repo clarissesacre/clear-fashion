@@ -193,22 +193,18 @@ console.log(avg);
 
 console.log("todo 8");
 const brands = {};
-marketplace.forEach(marketplace => {
-  if (!brands[marketplace.brand]) 
+
+
+
+for(let i=0; i<nb_product ; i++)
+{
+  if (!brands[marketplace[i].brand]) 
   {
-    brands[marketplace.brand] = [];
+    brands[marketplace[i].brand] = [];
   }
-  brands[marketplace.brand].push(marketplace);
-});
+  brands[marketplace[i].brand].push(marketplace[i]);
+}
 console.log(brands)
-
-
-
-
-
-
-
-
 
 
 // 🎯 TODO 9: Sort by price for each brand
