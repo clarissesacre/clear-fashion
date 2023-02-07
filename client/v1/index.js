@@ -93,7 +93,7 @@ function sort_by_price(marketproducts)
   var keys=newmarketplace.map((e)=>{return e[0]});
   return keys
 }
-sorted_marketplace = sort_by_price(marketplace)
+var sorted_marketplace = sort_by_price(marketplace)
 console.log(sorted_marketplace)
 // 2. Create a variable and assign it the list of products by price from lowest to highest
 var list_of_products = [];
