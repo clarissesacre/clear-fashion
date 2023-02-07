@@ -261,12 +261,24 @@ console.log(brands_by_date);
 // 1. Compute the p90 price value of each brand
 // The p90 value (90th percentile) is the lower value expected to be exceeded in 90% of the products
 
+// we sort : lower to highest price
 console.log("todo 11");
+function sort_by_price3(brand)
+{
+  return brand.sort((a, b) => {
+    return b.price - a.price;
+  });
+}
+for(let i in brands)
+{
+  brands[i]=sort_by_price3(brands[i]);
+}
+
 
 var index = [] 
 for(let i in brands)
 {
-  index=Math.floor(brands.length*0.9);
+  index=Math.floor(brands[i].length*0.9);
   console.log(brands[i],index);
 }
 
