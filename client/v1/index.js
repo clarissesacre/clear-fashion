@@ -491,15 +491,15 @@ for(let i = 0 ; i<=COTELE_PARIS.length ; i++)
 // // A reasonable price if all the products are less than 100€
 console.log("todo 2");
 var reasonable_price=100;
-var reasonable_store = True
+var reasonable_store = "True";
 for(let i = 0 ; i<=COTELE_PARIS.length ; i++)
 {
   if(COTELE_PARIS[i]['price']>=100)
   {
-    reasonable_store=False;
+    reasonable_store="False";
   }
 }
-if(reasonable_store==True)
+if(reasonable_store=="True")
 {
   console.log("reasonable store");
 }
