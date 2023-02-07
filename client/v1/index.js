@@ -93,7 +93,8 @@ function sort_by_price(marketproducts)
   {
     if(marketproducts[i]['price']<price_to_compare)
     {
-      newlist.push(marketproducts[i])
+      newlist.push(marketproducts[i]);
+      prince_to_compare=marketproducts[i]['price'];
     }
   }
   return newlist
