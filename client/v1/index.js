@@ -493,7 +493,7 @@ console.log("todo 2");
 var reasonable_price=100;
 var reasonable_store = "True";
 console.log(COTELE_PARIS[0]['price']);
-for(let i = 0 ; i<=COTELE_PARIS.length ; i++)
+for(let i = 0 ; i<COTELE_PARIS.length ; i++)
 {
   if(COTELE_PARIS[i]['price']>=100)
   {
