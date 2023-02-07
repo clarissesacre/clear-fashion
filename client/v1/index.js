@@ -52,7 +52,6 @@ console.log("Cheapest t-shirt for all brand : ")
 console.table(CHEAPEST_TSHIRT);
 
 // 2. Log the variable
-
 let compared_price = 10000;
 for (let i = 0; i < CHEAPEST_TSHIRT.length ; i++) 
 {
@@ -77,7 +76,11 @@ console.log(compared_price);
 
 // 🎯 TODO 2: Number of products
 // 1. Create a variable and assign it the number of products
+const nb_product = marketplace.length;
+
 // 2. Log the variable
+console.log(nb_product);
+
 
 // 🎯 TODO 3: Brands name
 // 1. Create a variable and assign it the list of brands name only
