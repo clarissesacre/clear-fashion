@@ -556,8 +556,11 @@ jacket.favorite = true;
 
 // 1. Log `blueJacket` and `jacket` variables
 console.log("todo 5");
+console.log("bluejacket");
 console.log(blueJacket);
+console.log("jacket");
 console.log(jacket);
+
 
 // 2. What do you notice?
 // same values
@@ -580,8 +583,9 @@ blueJacket = {
 
 jacket = Object.assign({}, blueJacket);
 jacket.favorite = true;
-
+console.log("bluejacket");
 console.log(blueJacket);
+console.log("jacket");
 console.log(jacket);
 
 
@@ -594,3 +598,7 @@ console.log(jacket);
 // 🎯 LAST TODO: Save in localStorage
 // 1. Save MY_FAVORITE_BRANDS in the localStorage
 // 2. log the localStorage
+
+localStorage.setItem("MY_FAVORITE_BRANDS", JSON.stringify(MY_FAVORITE_BRANDS));
+
+console.log(JSON.parse(localStorage.getItem("MY_FAVORITE_BRANDS")));
