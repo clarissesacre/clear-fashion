@@ -481,7 +481,8 @@ const twoWeeksAgo = new Date(Date.now()- 2 * 7 * 24 * 60 * 60 * 1000);
 console.log(Date(COTELE_PARIS[1]['released']));
 for(let i = 0 ; i<=COTELE_PARIS.length ; i++)
 {
-  var datee = Date(COTELE_PARIS[i]['released'])
+  console.log(Date(COTELE_PARIS[i]['released']));
+ 
   
 }
 
