@@ -481,9 +481,11 @@ const twoWeeksAgo = new Date(Date.now()- 2 * 7 * 24 * 60 * 60 * 1000);
 
 for(let i = 0 ; i<=COTELE_PARIS.length ; i++)
 {
-  const newProducts = COTELE_PARIS.filter(product => new Date(product.released) >= twoWeeksAgo);
-  
-  console.log(newProducts.length > 0, COTELE_PARIS[i]);
+  if(Date(COTELE_PARIS[i].released) >= twoWeeksAgo)
+  {
+    const newprod = False;
+    console.log(newprod.length > 0, COTELE_PARIS[i]);
+  }
 }
 
 
