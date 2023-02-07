@@ -31,9 +31,40 @@ console.log(MY_FAVORITE_BRANDS[0]);
 
 // 🎯 TODO 1: The cheapest t-shirt
 // 0. I have 3 favorite brands stored in MY_FAVORITE_BRANDS variable
-// 1. Create a new variable and assign it the link of the cheapest t-shirt
-// I can find on these e-shops
+// 1. Create a new variable and assign it the link of the cheapest t-shirt I can find on these e-shops
+
+var CHEAPEST_TSHIRT = 
+[
+  {
+    'url':'https://www.faguo-store.com/fr/vetements/7606-arcy-t-shirt-en-coton-recycle-kaki.html', 
+    'price':17.5,
+  }, 
+  {
+    'url':'https://www.loom.fr/collections/t-shirts-polos/products/le-t-shirt-homme',
+    'price':25
+  },
+  {
+    'url':'https://ecclo.fr/products/t-shirt-noir-boycott-world-cup-2022',
+    'price':19
+  }
+];
+console.log("Cheapest t-shirt for all brand : ")
+console.table(CHEAPEST_TSHIRT);
+
 // 2. Log the variable
+
+let compared_price = 10000;
+for (let i = 0; i < CHEAPEST_TSHIRT.length ; i++) 
+{
+  if(CHEAPEST_TSHIRT[i]['price']<compared_price)
+  {
+    compared_price = CHEAPEST_TSHIRT[i]['price'];
+  }
+}
+console.log("Cheapest t-shirt btw all brand: ")
+console.log(compared_price);
+
+
 
 /**
  * 👕
