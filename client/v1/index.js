@@ -263,7 +263,7 @@ console.log(brands_by_date);
 
 console.log("todo 11");
 
-const index = [] 
+var index = [] 
 for(let i in brands)
 {
   index=Math.floor(brands.length*0.9);
