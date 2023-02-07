@@ -279,7 +279,7 @@ var index = []
 for(let i in brands)
 {
   index=Math.floor(brands[i].length*0.9);
-  console.log("brand :", i ,index);
+  console.log(i , brands[i][index]);
 }
 
 
