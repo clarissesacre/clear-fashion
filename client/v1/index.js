@@ -88,9 +88,13 @@ console.table("todo 4");
 console.log(marketplace)
 function sort_by_price(marketproducts)
 {
-  return marketproducts['price'].sort()
+  var newmarketplace = Object.keys(marketproducts).map((key)=>{return[key,marketproducts[key]]});
+  newmarketplace.sort((first, second)=>{return first['price']-second['price']});
+  var keys=items.map((e)=>{return e[0]};)
+  return keys
 }
 sorted_marketplace = sort_by_price(marketplace)
+console.log(sorted_marketplace)
 // 2. Create a variable and assign it the list of products by price from lowest to highest
 var list_of_products = [];
 for(let i=0; i<nb_product ; i++)
