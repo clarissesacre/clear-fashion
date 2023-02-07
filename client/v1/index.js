@@ -142,7 +142,7 @@ console.log("todo 6");
 var btw_50_100 = Array();
 for(let i=0; i<nb_product ; i++)
 {
-  if(list_of_products_by_price['price']<=100 && list_of_products_by_price['price']>=50)
+  if(list_of_products_by_price[i]['price']<=100 && list_of_products_by_price[i]['price']>=50)
   {
       btw_50_100.push(list_of_products_by_price[i]);
   }
