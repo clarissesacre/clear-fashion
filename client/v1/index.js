@@ -164,9 +164,7 @@ for(let i=0; i<nb_product ; i++)
   avg += marketplace[i]['price'];
 }
 avg=avg/nb_product;
-console.log(avg)
-
-
+console.log(avg);
 
 
 
@@ -192,6 +190,26 @@ console.log(avg)
 //
 // 2. Log the variable
 // 3. Log the number of products by brands
+
+console.log("todo 8");
+const brands = {};
+marketplace.forEach(product => {
+  if (!brands[marketplace.brand]) {
+    brands[marketplace.brand] = [];
+  }
+
+  brands[marketplace.brand].push(marketplace);
+});
+console.log(brands)
+
+
+
+
+
+
+
+
+
 
 // 🎯 TODO 9: Sort by price for each brand
 // 1. For each brand, sort the products by price, from highest to lowest
