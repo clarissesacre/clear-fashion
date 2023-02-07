@@ -494,7 +494,7 @@ var reasonable_price=100;
 var reasonable_store = "True";
 for(let i = 0 ; i<=COTELE_PARIS.length ; i++)
 {
-  if(COTELE_PARIS[i]['price']>=100)
+  if(COTELE_PARIS[i].price>=100)
   {
     reasonable_store="False";
   }
