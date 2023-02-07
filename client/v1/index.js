@@ -193,9 +193,6 @@ console.log(avg);
 
 console.log("todo 8");
 const brands = {};
-
-
-
 for(let i=0; i<nb_product ; i++)
 {
   if (!brands[marketplace[i].brand]) 
@@ -204,12 +201,30 @@ for(let i=0; i<nb_product ; i++)
   }
   brands[marketplace[i].brand].push(marketplace[i]);
 }
-console.log(brands)
+console.log(brands);
+
+
 
 
 // 🎯 TODO 9: Sort by price for each brand
 // 1. For each brand, sort the products by price, from highest to lowest
 // 2. Log the sort
+function a(brand)
+{
+  return brand.sort((a, b) => {
+    return a.price - b.price;
+  });
+}
+
+console.log("todo 9");
+for(let i in brands)
+{
+  brands[i]=a(brands[i]);
+
+}
+
+console.log(brands)
+
 
 // 🎯 TODO 10: Sort by date for each brand
 // 1. For each brand, sort the products by date, from old to recent
