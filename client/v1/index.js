@@ -98,7 +98,7 @@ var sorted_marketplace = sort_by_price(marketplace)
 var list_of_products = [];
 for(let i=0; i<nb_product ; i++)
 {
-  list_of_products.push(sorted_marketplace[i]['price'])
+  list_of_products.push(sorted_marketplace[i])
 }
 
 // 3. Log the variable
@@ -109,19 +109,27 @@ console.log(list_of_products);
 
 // 🎯 TODO 5: Sort by date
 // 1. Create a function to sort the marketplace objects by products date
-console.table("todo 4");
+console.table("todo 5");
 function sort_by_date(marketplace)
 {
   return marketplace.sort((a, b) => {
     const dateA = new Date(a.released);
     const dateB = new Date(b.released);
-    return dateA - dateB;
+    return dateB - dateA;
   });
 }
-var sorted_marketplace = sort_by_date(marketplace)
-console.log(sorted_marketplace)
+
+var sorted_marketplace_by_date = sort_by_date(marketplace)
+//console.log(sorted_marketplace_by_date)
 // 2. Create a variable and assign it the list of products by date from recent to old
+var list_of_products_by_date = [];
+for(let i=0; i<nb_product ; i++)
+{
+  list_of_products_by_date.push(sorted_marketplace_by_date[i])
+}
+
 // 3. Log the variable
+console.log(list_of_products_by_date);
 
 // 🎯 TODO 6: Filter a specific price range
 // 1. Filter the list of products between 50€ and 100€
