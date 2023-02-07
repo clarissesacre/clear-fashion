@@ -109,6 +109,15 @@ console.log(list_of_products);
 
 // 🎯 TODO 5: Sort by date
 // 1. Create a function to sort the marketplace objects by products date
+console.table("todo 4");
+function sort_by_date(marketplace)
+{
+  return marketplace.sort((a, b) => {
+    return a.date - b.date;
+  });
+}
+var sorted_marketplace = sort_by_date(marketplace)
+console.log(sorted_marketplace)
 // 2. Create a variable and assign it the list of products by date from recent to old
 // 3. Log the variable
 
