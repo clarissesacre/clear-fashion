@@ -482,6 +482,7 @@ const twoWeeksAgo = new Date(Date.now()- 2 * 7 * 24 * 60 * 60 * 1000);
 
 for(let i=0;i<COTELE_PARIS.length;i++)
 {
+  console.log(COTELE_PARIS[i]['released']);
   if(twoWeeksAgo<=Date(COTELE_PARIS[i]['released']))
   {
     console.log(COTELE_PARIS[i]);
