@@ -87,8 +87,9 @@ console.log(list_of_brands);
 console.table("todo 4");
 function sort_by_price(marketproducts)
 {
-  return marketproducts.sort(function(a, b){return a-b})
-  
+  return marketproducts.sort((a, b) => {
+    return a.price - b.price;
+  });
 }
 
 var sorted_marketplace = sort_by_price(marketplace)
