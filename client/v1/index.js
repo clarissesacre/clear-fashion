@@ -499,6 +499,7 @@ for(let i = 0 ; i<COTELE_PARIS.length ; i++)
     reasonable_store="False";
     console.log("not a reasonable store");
   }
+  break;
 }
 
 
