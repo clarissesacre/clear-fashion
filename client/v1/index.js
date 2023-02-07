@@ -284,7 +284,6 @@ for(let i in brands)
 
 
 
-
 /**
  * 🧥
  * Cool for your effort.
@@ -476,6 +475,11 @@ const COTELE_PARIS = [
 // 🎯 TODO 1: New released products
 // // 1. Log if we have new products only (true or false)
 // // A new product is a product `released` less than 2 weeks.
+
+console.log("todo 1");
+console.log(Date.now())
+
+
 
 // 🎯 TODO 2: Reasonable price
 // // 1. Log if coteleparis is a reasonable price shop (true or false)
