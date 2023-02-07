@@ -87,7 +87,7 @@ console.log(list_of_brands);
 console.table("todo 4");
 function sort_by_price(marketproducts)
 {
-  var newlist = [];
+  var newlist = new ArrayList();
   var price_to_compare = 1000000000000000000;
   for(let i = 0 ; i < marketproducts.length ; i++)
   {
