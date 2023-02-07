@@ -482,11 +482,7 @@ console.log(Date(COTELE_PARIS[1]['released']));
 for(let i = 0 ; i<=COTELE_PARIS.length ; i++)
 {
   var datee =new Date(COTELE_PARIS[i]['released'])
-  if(datee >= twoWeeksAgo)
-  {
-    const newprod = False;
-    console.log(newprod.length > 0, COTELE_PARIS[i]);
-  }
+  
 }
 
 
