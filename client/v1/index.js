@@ -209,26 +209,49 @@ console.log(brands);
 // 🎯 TODO 9: Sort by price for each brand
 // 1. For each brand, sort the products by price, from highest to lowest
 // 2. Log the sort
-function a(brand)
+console.log("todo 9");
+function sort_by_price2(brand)
 {
   return brand.sort((a, b) => {
     return a.price - b.price;
   });
 }
 
-console.log("todo 9");
 for(let i in brands)
 {
-  brands[i]=a(brands[i]);
-
+  brands[i]=sort_by_price2(brands[i]);
 }
-
 console.log(brands)
+
+
 
 
 // 🎯 TODO 10: Sort by date for each brand
 // 1. For each brand, sort the products by date, from old to recent
 // 2. Log the sort
+console.table("todo 10");
+function sort_by_date2(brand)
+{
+  return brand.sort((a, b) => {
+    const dateA = new Date(a.released);
+    const dateB = new Date(b.released);
+    return dateA - dateB;
+  });
+}
+
+
+for(let i in brands)
+{
+  brands[i]=sort_by_date2(brands[i]);
+}
+console.log(brands)
+
+
+
+
+
+
+
 
 /**
  * 💶
