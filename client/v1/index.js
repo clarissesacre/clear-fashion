@@ -477,7 +477,7 @@ const COTELE_PARIS = [
 // // A new product is a product `released` less than 2 weeks.
 
 console.log("todo 1");
-const twoWeeksAgo = new Date(Date.now());
+const twoWeeksAgo = new Date(Date.now()- 2 * 7 * 24 * 60 * 60 * 1000);
 console.log(twoWeeksAgo)
 
 
