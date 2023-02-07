@@ -556,6 +556,11 @@ jacket.favorite = true;
 
 // 1. Log `blueJacket` and `jacket` variables
 // 2. What do you notice?
+console.log("todo 5");
+console.log(blueJacket);
+console.log(jacket);
+
+
 
 // we make a new assignment again
 blueJacket = {
