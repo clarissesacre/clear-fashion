@@ -193,11 +193,11 @@ console.log(avg);
 
 console.log("todo 8");
 const brands = {};
-marketplace.forEach(product => {
-  if (!brands[marketplace.brand]) {
+marketplace.forEach(marketplace => {
+  if (!brands[marketplace.brand]) 
+  {
     brands[marketplace.brand] = [];
   }
-
   brands[marketplace.brand].push(marketplace);
 });
 console.log(brands)
