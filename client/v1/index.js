@@ -479,11 +479,14 @@ const COTELE_PARIS = [
 console.log("todo 1");
 const twoWeeksAgo = new Date(Date.now()- 2 * 7 * 24 * 60 * 60 * 1000);
 
+for(let i = 0 ; i<=COTELE_PARIS.length ; i++)
+{
+  const newProducts = COTELE_PARIS.filter(product => new Date(product.released) >= twoWeeksAgo);
+  
+  console.log(newProducts.length > 0, COTELE_PARIS[i]);
+}
 
 
-const newProducts = COTELE_PARIS.filter(product => new Date(product.released) >= twoWeeksAgo);
-
-console.log(newProducts.length > 0);
 
 // 🎯 TODO 2: Reasonable price
 // // 1. Log if coteleparis is a reasonable price shop (true or false)
