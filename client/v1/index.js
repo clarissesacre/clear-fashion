@@ -478,17 +478,7 @@ const COTELE_PARIS = [
 
 console.log("todo 1");
 const twoWeeksAgo = new Date(Date.now()- 2 * 7 * 24 * 60 * 60 * 1000);
-console.log(twoWeeksAgo)
-var today = new Date();
-console.log(today.getTime());
-for(let i=0;i<COTELE_PARIS.length;i++)
-{
-  console.log(COTELE_PARIS[i]['released']);
-  if(today.getTime() <= Date(COTELE_PARIS[i]['released']).getTime())
-  {
-    console.log(COTELE_PARIS[i]);
-  }
-}
+
 
 
 const newProducts = COTELE_PARIS.filter(product => new Date(product.released) >= twoWeeksAgo);
