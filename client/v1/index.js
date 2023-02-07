@@ -87,7 +87,7 @@ console.log(list_of_brands);
 console.table("todo 4");
 function sort_by_price(marketproducts)
 {
-  var newlist = new ArrayList();
+  let newlist = new Array();
   var price_to_compare = 1000000000000000000;
   for(let i = 0 ; i < marketproducts.length ; i++)
   {
@@ -99,7 +99,7 @@ function sort_by_price(marketproducts)
   return newlist
 }
 
-var sorted_marketplace = sort_by_price(marketplace)
+let sorted_marketplace = sort_by_price(marketplace)
 console.log(sorted_marketplace)
 
 // 2. Create a variable and assign it the list of products by price from lowest to highest
