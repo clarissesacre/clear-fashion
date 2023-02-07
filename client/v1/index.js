@@ -85,14 +85,20 @@ console.log(list_of_brands);
 // 🎯 TODO 4: Sort by price
 // 1. Create a function to sort the marketplace products by price
 console.table("todo 4");
-console.log(marketplace)
-console.log(marketplace[8]['price'])
 function sort_by_price(marketproducts)
 {
   var newlist = [];
-  newlist = Collections.sort(marketproducts[i]['price']);
+  var price_to_compare = 1000000000000000000;
+  for(let i = 0 ; i < marketproducts.length ; i++)
+  {
+    if(marketproducts[i]['price']<price_to_compare)
+    {
+      newlist.add(marketproducts[i])
+    }
+  }
   return newlist
 }
+
 var sorted_marketplace = sort_by_price(marketplace)
 console.log(sorted_marketplace)
 
