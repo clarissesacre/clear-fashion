@@ -491,6 +491,10 @@ for(let i=0;i<COTELE_PARIS.length;i++)
 }
 
 
+const newProducts = COTELE_PARIS.filter(product => new Date(product.released) >= twoWeeksAgo);
+
+console.log(newProducts.length > 0);
+
 // 🎯 TODO 2: Reasonable price
 // // 1. Log if coteleparis is a reasonable price shop (true or false)
 // // A reasonable price if all the products are less than 100€
