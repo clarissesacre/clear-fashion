@@ -497,12 +497,8 @@ for(let i = 0 ; i<COTELE_PARIS.length ; i++)
   if(COTELE_PARIS[i]['price']>=100)
   {
     reasonable_store="False";
-    console.log(COTELE_PARIS[i]);
+    console.log("not a reasonable store");
   }
-}
-if(reasonable_store=="True")
-{
-  console.log("reasonable store");
 }
 
 
