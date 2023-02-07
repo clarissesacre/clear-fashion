@@ -93,7 +93,7 @@ function sort_by_price(marketproducts)
   {
     if(marketproducts[i]['price']<price_to_compare)
     {
-      newlist.add(marketproducts[i])
+      newlist.push(marketproducts[i])
     }
   }
   return newlist
