@@ -147,11 +147,28 @@ for(let i=0; i<nb_product ; i++)
       btw_50_100.push(list_of_products_by_price[i]);
   }
 }
-console.log(btw_50_100)
+console.log(btw_50_100);
+
+
+
+
 
 // 🎯 TODO 7: Average price
 // 1. Determine the average price of the marketplace
 // 2. Log the average
+
+console.log("todo 7");
+var avg = 0;
+for(let i=0; i<nb_product ; i++)
+{
+  avg += marketplace[i]['price'];
+}
+avg=avg/nb_product;
+console.log(avg)
+
+
+
+
 
 /**
  * 🏎
