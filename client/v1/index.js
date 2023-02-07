@@ -88,10 +88,9 @@ console.table("todo 4");
 console.log(marketplace)
 function sort_by_price(marketproducts)
 {
-  var newmarketplace = Object.keys(marketproducts).map((key)=>{return[key,marketproducts[key]]});
-  newmarketplace.sort((first, second)=>{return first['price']-second['price']});
-  var keys=newmarketplace.map((e)=>{return e[0]});
-  return keys
+  var newlist = [];
+  newlist = Collections.sort(marketproducts[i]['price']);
+  return newlist
 }
 var sorted_marketplace = sort_by_price(marketplace)
 console.log(sorted_marketplace)
