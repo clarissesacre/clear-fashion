@@ -90,7 +90,7 @@ function sort_by_price(marketproducts)
 {
   var newmarketplace = Object.keys(marketproducts).map((key)=>{return[key,marketproducts[key]]});
   newmarketplace.sort((first, second)=>{return first['price']-second['price']});
-  var keys=items.map((e)=>{return e[0]};)
+  var keys=items.map((e)=>{return e[0]});
   return keys
 }
 sorted_marketplace = sort_by_price(marketplace)
