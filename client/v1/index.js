@@ -522,6 +522,7 @@ for(let i = 0 ; i<COTELE_PARIS.length ; i++)
 console.log("todo 4");
 var right_uuid=`2b9a47e3-ed73-52f6-8b91-379e9c8e526c`;
 const new_COTELE_PARIS = []
+console.log(COTELE_PARIS.length, COTELE_PARIS);
 for(let i = 0 ; i<COTELE_PARIS.length ; i++)
 {
   if(COTELE_PARIS[i]['uuid']!=right_uuid)
@@ -529,7 +530,7 @@ for(let i = 0 ; i<COTELE_PARIS.length ; i++)
     new_COTELE_PARIS.push(COTELE_PARIS[i]);
   }
 }
-console.log(new_COTELE_PARIS);
+console.log(new_COTELE_PARIS.length,new_COTELE_PARIS);
 
 
 
