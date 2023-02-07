@@ -238,15 +238,12 @@ function sort_by_date2(brand)
     return dateA - dateB;
   });
 }
-
-
+const brands_by_date={};
 for(let i in brands)
 {
-  brands[i]=sort_by_date2(brands[i]);
+  brands_by_date[i]=sort_by_date2(brands[i]);
 }
-console.log(brands)
-
-
+console.log(brands_by_date);
 
 
 
@@ -263,6 +260,18 @@ console.log(brands)
 // 🎯 TODO 11: Compute the p90 price value
 // 1. Compute the p90 price value of each brand
 // The p90 value (90th percentile) is the lower value expected to be exceeded in 90% of the products
+
+console.log("todo 11");
+
+const index = [] 
+for(let i in brands)
+{
+  index=Math.floor(brands.length*0.9);
+  console.log(brands[i],index);
+}
+
+
+
 
 /**
  * 🧥
