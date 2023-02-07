@@ -113,7 +113,9 @@ console.table("todo 4");
 function sort_by_date(marketplace)
 {
   return marketplace.sort((a, b) => {
-    return a.released - b.released;
+    const dateA = new Date(a.released);
+    const dateB = new Date(b.released);
+    return dateA - dateB;
   });
 }
 var sorted_marketplace = sort_by_date(marketplace)
