@@ -95,14 +95,14 @@ var sorted_marketplace = sort_by_price(marketplace)
 //console.log(sorted_marketplace)
 
 // 2. Create a variable and assign it the list of products by price from lowest to highest
-var list_of_products = [];
+var list_of_products_by_price = [];
 for(let i=0; i<nb_product ; i++)
 {
-  list_of_products.push(sorted_marketplace[i])
+  list_of_products_by_price.push(sorted_marketplace[i])
 }
 
 // 3. Log the variable
-console.log(list_of_products);
+console.log(list_of_products_by_price);
 
 
 
@@ -131,9 +131,23 @@ for(let i=0; i<nb_product ; i++)
 // 3. Log the variable
 console.log(list_of_products_by_date);
 
+
+
+
 // 🎯 TODO 6: Filter a specific price range
 // 1. Filter the list of products between 50€ and 100€
 // 2. Log the list
+
+console.log("todo 6");
+var btw_50_100 = Array();
+for(let i=0; i<nb_product ; i++)
+{
+  if(list_of_products_by_price<=100 && list_of_products_by_price>=50)
+  {
+      btw_50_100.push(list_of_products_by_price[i]);
+  }
+}
+console.log(btw_50_100)
 
 // 🎯 TODO 7: Average price
 // 1. Determine the average price of the marketplace
