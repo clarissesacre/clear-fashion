@@ -36,10 +36,7 @@ const parse = data => {
         price=price[1];
         price = parseInt(price);
 
-
-    
-
-        
+                
         
       return {name, price};
     })
