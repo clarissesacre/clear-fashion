@@ -28,7 +28,8 @@ async function sandbox_montlimart (eshop = 'https://www.montlimart.com/99-veteme
   try {
     console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
 
-    const products = await montlimartbrand.scrape(eshop); 
+    const products = await montlimartbrand.scrape(eshop);
+
 
     console.log(products);
     console.log('done');
