@@ -3,7 +3,7 @@
 
 
 const dedicatedbrand = require('./eshops/dedicatedbrand'); // /eshops/dedicatedbrand : chemin à gauche pour trouver la fonction à appeler
-const dedicatedbrand = require('./eshops/montlimart');
+const montlimartbrand = require('./eshops/montlimart');
 
 // remettre la ligne au dessus aussi pour les autres sites
 
@@ -28,7 +28,7 @@ async function sandbox_montlimart (eshop = 'https://www.montlimart.com/99-veteme
   try {
     console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
 
-    const products = await montlimart.scrape(eshop); 
+    const products = await montlimartbrand.scrape(eshop); 
 
     console.log(products);
     console.log('done');
