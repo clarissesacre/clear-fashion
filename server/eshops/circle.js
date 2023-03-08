@@ -15,7 +15,7 @@ const cheerio = require('cheerio');
 const parse = data => {
   const $ = cheerio.load(data);
 
-  return $('.product-grid-container .grid_item') // on va analyser tous les éléments 1 par 1
+  return $('.product-grid-container .grid__item') // on va analyser tous les éléments 1 par 1
   // productList-container : endroit où y'a les produits
   // productList : où y'a un produit
     .map((i, element) => {
