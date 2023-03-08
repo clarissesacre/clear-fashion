@@ -19,18 +19,26 @@ const parse = data => {
   // productList-container : endroit où y'a les produits
   // productList : où y'a un produit
     .map((i, element) => {
-      const name = $(element)
+      var name = $(element)
         .find('.productList-title') // on prend le nom
         .text()
         .trim()
         .replace(/\s/g, ' ');
+      
+      var color = name.split(" ");
+      color = color.slice(-1);
+
       const price = parseInt(
         $(element)
           .find('.productList-price') // on prend le prix
           .text()
       );
 
-      return {name, price};
+      
+
+
+
+      return {name, color, price};
     })
     .get();
 };
