@@ -19,12 +19,12 @@ const parse = data => {
       const name = $(element)
         .find('.text-reset') // on prend le nom
         .text()
-        .trim();
+        .trim()
+        .toLowerCase();
       const price = parseInt(
         $(element)
           .find('.price') // on prend le prix
           .text()
-          
       );
 
       return {name, price};
