@@ -27,6 +27,7 @@ const parse = data => {
       
       var color = name.split(" ");
       color = color.slice(-1);
+      color = color[0]
 
       const price = parseInt(
         $(element)
