@@ -14,7 +14,7 @@ const cheerio = require('cheerio');
 const parse = data => {
   const $ = cheerio.load(data);
 
-  return $('.products-list*  .products-list_block*') // * quand y'a des espaces : on prend ce qui commence par ça
+  return $('.products-list  .products-list_block*') // * quand y'a des espaces : on prend ce qui commence par ça
     .map((i, element) => {
       const name = $(element)
         .find('.text-reset') // on prend le nom
@@ -24,6 +24,7 @@ const parse = data => {
         $(element)
           .find('.price') // on prend le prix
           .text()
+          
       );
 
       return {name, price};
