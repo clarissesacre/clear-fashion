@@ -16,18 +16,25 @@ const parse = data => {
 
   return $('.products-list  .products-list__block*') // * quand y'a des espaces : on prend ce qui commence par ça
     .map((i, element) => {
-      const name = $(element)
+        const name = $(element)
         .find('.text-reset') // on prend le nom
         .text()
         .trim()
         .toLowerCase();
-      const price = parseInt(
-        $(element)
-          .find('.price') // on prend le prix
-          .text()
-      );
+        
+        const color = $(element)
+        .find('.product-miniature__color') // on prend le nom
+        .text()
+        .trim()
+        .toLowerCase();
 
-      return {name, price};
+        const price = parseInt(
+        $(element)
+            .find('.price') // on prend le prix
+            .text()
+        );
+
+      return {name, color, price};
     })
     .get();
 };
