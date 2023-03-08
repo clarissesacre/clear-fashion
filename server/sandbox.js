@@ -59,6 +59,7 @@ async function sandbox_circle (eshop = 'https://shop.circlesportswear.com/collec
 
 const [,, eshop] = process.argv;
 
-sandbox_dedicated(eshop);
-
+//sandbox_dedicated(eshop);
+//sandbox_montlimart(eshop);
+sandbox_circle(eshop);
 
