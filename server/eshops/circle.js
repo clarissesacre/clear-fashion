@@ -15,7 +15,7 @@ const cheerio = require('cheerio');
 const parse = data => {
   const $ = cheerio.load(data);
 
-  return $('.collection .grid_item') // on va analyser tous les éléments 1 par 1
+  return $('.product-grid-container .grid_item') // on va analyser tous les éléments 1 par 1
   // productList-container : endroit où y'a les produits
   // productList : où y'a un produit
     .map((i, element) => {
@@ -24,7 +24,7 @@ const parse = data => {
         .text()
         .trim();
       const price = $(element)
-        .find('.price_regular') // on prend le prix
+        .find('.money') // on prend le prix
         .text()
         .trim();
 
