@@ -1,3 +1,9 @@
+// fonction pour scrapper
+
+// pour DEDICATED brand 
+// faire un truc comme ça par site
+// créer un autre .js pour les autres sites 
+
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
@@ -9,16 +15,18 @@ const cheerio = require('cheerio');
 const parse = data => {
   const $ = cheerio.load(data);
 
-  return $('.productList-container .productList')
+  return $('.productList-container .productList') // on va analyser tous les éléments 1 par 1
+  // productList-container : endroit où y'a les produits
+  // productList : où y'a un produit
     .map((i, element) => {
       const name = $(element)
-        .find('.productList-title')
+        .find('.productList-title') // on prend le nom
         .text()
         .trim()
         .replace(/\s/g, ' ');
       const price = parseInt(
         $(element)
-          .find('.productList-price')
+          .find('.productList-price') // on prend le prix
           .text()
       );
 
@@ -27,6 +35,7 @@ const parse = data => {
     .get();
 };
 
+// ça on s'en fou
 /**
  * Scrape all the products for a given url page
  * @param  {[type]}  url
@@ -50,3 +59,5 @@ module.exports.scrape = async url => {
     return null;
   }
 };
+
+// FIN DEDICATED brand
