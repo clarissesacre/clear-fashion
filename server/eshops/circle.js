@@ -36,9 +36,15 @@ const parse = data => {
         price=price[1];
         price = parseInt(price);
 
-                
+
+        var color = $(element)
+        .find('.color-variant')
+        //.getAttribute(data-color)
+        .text()
+        .trim();
         
-      return {name, price};
+    
+      return {name, color, price};
     })
     .get();
 };
