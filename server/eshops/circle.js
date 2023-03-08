@@ -19,15 +19,28 @@ const parse = data => {
   // productList-container : endroit où y'a les produits
   // productList : où y'a un produit
     .map((i, element) => {
-      const name = $(element)
+        var name = $(element)
         .find('.full-unstyled-link') // on prend le nom
         .text()
-        .trim();
-      const price = $(element)
+        .trim()
+        .replace(/(\n)/gm, "")
+        .split("      ");
+        name = name[0];
+        
+        
+        var price = $(element)
         .find('.money') // on prend le prix
         .text()
-        .trim();
+        .trim()
+        .split("€");
+        price=price[1];
+        price = parseInt(price);
 
+
+    
+
+        
+        
       return {name, price};
     })
     .get();
