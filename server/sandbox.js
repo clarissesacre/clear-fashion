@@ -25,9 +25,7 @@ async function sandbox_all_brand(eshop)
 {
   for(let i=0; i<all_brands.length;i++)
   {
-
     eshop = all_brands[i];
-    console.log(eshop);
     //dedicatedbrand men
     if(eshop == 'https://www.dedicatedbrand.com/en/men/news')
     {
@@ -36,7 +34,7 @@ async function sandbox_all_brand(eshop)
         console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
         const products = await dedicatedbrand.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
         prod = products;
-        //console.log(products);
+        console.log(products);
       } catch (e) {
         console.error(e);
         process.exit(1);
@@ -64,7 +62,7 @@ async function sandbox_all_brand(eshop)
       try {
         console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
         const products = await montlimartbrand.scrape(eshop);
-        //console.log(products);
+        console.log(products);
         prod = products;
       } catch (e) {
         console.error(e);
@@ -79,7 +77,7 @@ async function sandbox_all_brand(eshop)
       try {
         console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
         const products = await circlebrand.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
-        //console.log(products);
+        console.log(products);
         prod = products;
       } catch (e) {
         console.error(e);
