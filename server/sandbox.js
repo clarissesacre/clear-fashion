@@ -9,6 +9,7 @@ const circlebrand = require('./eshops/circle');
 
 async function add_to_mongoDB(products, shopName)
 {
+  console.log('aaaa')
   const {MongoClient} = require('mongodb'); //import mongodb
   const MONGODB_URI = 'mongodb+srv://clarissesacre:clarisse@clusterclearfashion.7kttiwq.mongodb.net/test?retryWrites=true&w=majority';
   const MONGODB_DB_NAME = 'ClusterClearFashion';
@@ -17,78 +18,84 @@ async function add_to_mongoDB(products, shopName)
   const collection = db.collection(shopName); // crée une sous database dans clusterclearfashion
   const result = await collection.insertMany(products); // mets elements dans collection
   console.log(`${products.length} products added in the databse ${shopName}`);
+  console.log('done')
 }
 
-const all_brand = ['https://shop.circlesportswear.com/collections/collection-femme','https://www.dedicatedbrand.com/en/men/news','https://www.dedicatedbrand.com/en/women/all-women','https://www.montlimart.com/99-vetements','https://shop.circlesportswear.com/collections/collection-homme']
+const all_brands = ['https://www.dedicatedbrand.com/en/men/news','https://shop.circlesportswear.com/collections/collection-femme','https://www.dedicatedbrand.com/en/men/news','https://www.dedicatedbrand.com/en/women/all-women','https://www.montlimart.com/99-vetements','https://shop.circlesportswear.com/collections/collection-homme'];
 
 async function sandbox_all_brand(eshop)
 {
-  //dedicatedbrand men
-  if(eshop == 'https://www.dedicatedbrand.com/en/men/news')
+  for(let i=0; i<all_brands.length;i++)
   {
-    try {
-      console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
-      const products = await dedicatedbrand.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
-      console.log(products);
-      console.log('done');
-    } catch (e) {
-      console.error(e);
-      process.exit(1);
+    console.log('a')
+    eshop = all_brands[i];
+    //dedicatedbrand men
+    if(eshop == 'https://www.dedicatedbrand.com/en/men/news')
+    {
+      try {
+        console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
+        const products = await dedicatedbrand.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
+        console.log(products);
+        console.log('done');
+      } catch (e) {
+        console.error(e);
+        process.exit(1);
+      }
+      add_to_mongoDB(products, 'Dedicated')
     }
-    add_to_mongoDB(products, 'Dedicated')
-  }
 
-  //dedicatedbrand women
-  if(eshop == 'https://www.dedicatedbrand.com/en/women/all-women') {
-    try {
-      console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
-      const products = await dedicatedbrand.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
-      console.log(products);
-      console.log('done');
-    } catch (e) {
-      console.error(e);
-      process.exit(1);
+    //dedicatedbrand women
+    if(eshop == 'https://www.dedicatedbrand.com/en/women/all-women') {
+      try {
+        console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
+        const products = await dedicatedbrand.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
+        console.log(products);
+        console.log('done');
+      } catch (e) {
+        console.error(e);
+        process.exit(1);
+      }
     }
-  }
 
-  //montlimart
-  if(eshop == 'https://www.montlimart.com/99-vetements') {
-    try {
-      console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
-      const products = await montlimartbrand.scrape(eshop);
-      console.log(products);
-      console.log('done');
-    } catch (e) {
-      console.error(e);
-      process.exit(1);
+    //montlimart
+    if(eshop == 'https://www.montlimart.com/99-vetements') {
+      try {
+        console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
+        const products = await montlimartbrand.scrape(eshop);
+        console.log(products);
+        console.log('done');
+      } catch (e) {
+        console.error(e);
+        process.exit(1);
+      }
+      add_to_mongoDB(products, 'Montlimart')
     }
-    add_to_mongoDB(products, 'Montlimart')
-  }
 
-  //circle men
-  if(eshop == 'https://shop.circlesportswear.com/collections/collection-homme') {
-    try {
-      console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
-      const products = await circlebrand.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
-      console.log(products);
-      console.log('done');
-    } catch (e) {
-      console.error(e);
-      process.exit(1);
+    //circle men
+    if(eshop == 'https://shop.circlesportswear.com/collections/collection-homme') {
+      try {
+        console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
+        const products = await circlebrand.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
+        console.log(products);
+        console.log('done');
+      } catch (e) {
+        console.error(e);
+        process.exit(1);
+      }
+      add_to_mongoDB(products, 'Circle')
     }
-    add_to_mongoDB(products, 'Circle')
-  }
 
-  //dedicatedbrand men
-  if(eshop == 'https://shop.circlesportswear.com/collections/collection-femme') {
-    try {
-      console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
-      const products = await circlebrand.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
-      console.log(products);
-      console.log('done');
-    } catch (e) {
-      console.error(e);
-      process.exit(1);
+    //dedicatedbrand men
+    if(eshop == 'https://shop.circlesportswear.com/collections/collection-femme') {
+      try {
+        console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
+        const products = await circlebrand.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
+        console.log(products);
+        console.log('done');
+      } catch (e) {
+        console.error(e);
+        process.exit(1);
+      }
     }
   }
 }
@@ -180,5 +187,4 @@ const [,, eshop] = process.argv;
 //sandbox_dedicated_women(eshop);
 //sandbox_circle_women(eshop);
 
-const val = [{'':'', '':''}];
-sandbox_all_brand(all_brand);
+sandbox_all_brand(all_brands);
