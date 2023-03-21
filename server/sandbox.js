@@ -8,6 +8,18 @@ const circlebrand = require('./eshops/circle');
 
 // remettre la ligne au dessus aussi pour les autres sites
 
+async function ajout_mongoDB(products, shopname)
+{
+  console.log('mongodb'); 
+  const {MongoClient} = require('mongodb'); //import mongodb
+  const MONGODB_URI = 'mongodb+srv://clarissesacre:clarisse@clusterclearfashion.7kttiwq.mongodb.net/test?retryWrites=true&w=majority';
+  const MONGODB_DB_NAME = 'ClusterClearFashion';
+  const client = await MongoClient.connect(MONGODB_URI, {'useNewUrlParser': true});
+  const db =  client.db(MONGODB_DB_NAME); // connect à notre base de donnée
+  const collection = db.collection(shopName); // crée une sous database dans clusterclearfashion
+  const result = await collection.insertMany(products); // mets elements dans collection
+  console.log(`${products.length} products added in the databse ${shopName}`);
+}
 
 async function sandbox_dedicated (eshop = 'https://www.dedicatedbrand.com/en/men/news') {
   try {
@@ -89,6 +101,9 @@ async function sandbox_circle_women (eshop = 'https://shop.circlesportswear.com/
 }
 
 
+
+
+
 const [,, eshop] = process.argv;
 
 //sandbox_dedicated(eshop);
@@ -96,3 +111,5 @@ const [,, eshop] = process.argv;
 //sandbox_circle(eshop);
 //sandbox_dedicated_women(eshop);
 sandbox_circle_women(eshop);
+
+
