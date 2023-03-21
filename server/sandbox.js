@@ -100,6 +100,7 @@ async function sandbox_all_brand(eshop)
       }
     }
   }
+  process.exit(0);
 }
 
 
