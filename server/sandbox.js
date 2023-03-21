@@ -19,8 +19,9 @@ async function add_to_mongoDB(products, shopName)
   console.log(`${products.length} products added in the databse ${shopName}`);
 }
 
+const all_brand = ['https://shop.circlesportswear.com/collections/collection-femme','https://www.dedicatedbrand.com/en/men/news','https://www.dedicatedbrand.com/en/women/all-women','https://www.montlimart.com/99-vetements','https://shop.circlesportswear.com/collections/collection-homme']
 
-async function sandbox_all_brand()
+async function sandbox_all_brand(eshop)
 {
   //dedicatedbrand men
   if(eshop == 'https://www.dedicatedbrand.com/en/men/news')
@@ -71,7 +72,6 @@ async function sandbox_all_brand()
       const products = await circlebrand.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
       console.log(products);
       console.log('done');
-      process.exit(0);
     } catch (e) {
       console.error(e);
       process.exit(1);
@@ -181,4 +181,4 @@ const [,, eshop] = process.argv;
 //sandbox_circle_women(eshop);
 
 const val = [{'':'', '':''}];
-sandbox_all_brand();
+sandbox_all_brand(all_brand);
