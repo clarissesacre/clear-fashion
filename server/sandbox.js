@@ -34,7 +34,7 @@ async function sandbox_all_brand(eshop)
         console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
         const products = await dedicatedbrand.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
         prod = products;
-        console.log(products);
+        //console.log(products);
       } catch (e) {
         console.error(e);
         process.exit(1);
@@ -62,13 +62,13 @@ async function sandbox_all_brand(eshop)
       try {
         console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
         const products = await montlimartbrand.scrape(eshop);
-        console.log(products);
+        //console.log(products);
         prod = products;
       } catch (e) {
         console.error(e);
         process.exit(1);
       }
-      add_to_mongoDB(prod, 'Montlimart')
+      await add_to_mongoDB(prod, 'Montlimart')
     }
 
     //circle men
@@ -77,13 +77,13 @@ async function sandbox_all_brand(eshop)
       try {
         console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
         const products = await circlebrand.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
-        console.log(products);
+        //console.log(products);
         prod = products;
       } catch (e) {
         console.error(e);
         process.exit(1);
       }
-      add_to_mongoDB(prod, 'Circle')
+      await add_to_mongoDB(prod, 'Circle')
     }
 
     //dedicatedbrand men
