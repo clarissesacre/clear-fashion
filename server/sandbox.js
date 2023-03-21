@@ -19,7 +19,7 @@ async function add_to_mongoDB(products, shopName)
   console.log(`${products.length} products added in the databse ${shopName}`);
 }
 
-const all_brands = ['https://www.dedicatedbrand.com/en/men/news','https://shop.circlesportswear.com/collections/collection-femme','https://www.dedicatedbrand.com/en/men/news','https://www.dedicatedbrand.com/en/women/all-women','https://www.montlimart.com/99-vetements','https://shop.circlesportswear.com/collections/collection-homme'];
+const all_brands = ['https://shop.circlesportswear.com/collections/collection-femme','https://www.dedicatedbrand.com/en/men/news','https://www.dedicatedbrand.com/en/women/all-women','https://www.montlimart.com/99-vetements','https://shop.circlesportswear.com/collections/collection-homme'];
 
 async function sandbox_all_brand(eshop)
 {
