@@ -8,7 +8,7 @@ const circlebrand = require('./eshops/circle');
 
 // remettre la ligne au dessus aussi pour les autres sites
 
-async function ajout_mongoDB(products, shopname)
+async function ajout_mongoDB(products, shopName)
 {
   console.log('mongodb'); 
   const {MongoClient} = require('mongodb'); //import mongodb
@@ -19,6 +19,7 @@ async function ajout_mongoDB(products, shopname)
   const collection = db.collection(shopName); // crée une sous database dans clusterclearfashion
   const result = await collection.insertMany(products); // mets elements dans collection
   console.log(`${products.length} products added in the databse ${shopName}`);
+  process.exit(0);
 }
 
 async function sandbox_dedicated (eshop = 'https://www.dedicatedbrand.com/en/men/news') {
