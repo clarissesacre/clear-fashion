@@ -42,9 +42,9 @@ const parse = data => {
         //.getAttribute(data-color)
         .text()
         .trim();
-        
-    
-      return {name, color, price};
+        const shopname = 'circle';
+
+      return {shopname, name, color, price};
     })
     .get();
 };
