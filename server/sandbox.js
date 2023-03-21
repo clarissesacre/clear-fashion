@@ -23,7 +23,7 @@ async function add_to_mongoDB(products, shopName)
 async function sandbox_all_brand()
 {
   //dedicatedbrand men
-  if(eshop = 'https://www.dedicatedbrand.com/en/men/news')
+  if(eshop == 'https://www.dedicatedbrand.com/en/men/news')
   {
     try {
       console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
@@ -38,7 +38,7 @@ async function sandbox_all_brand()
   }
 
   //dedicatedbrand women
-  if(eshop = 'https://www.dedicatedbrand.com/en/women/all-women') {
+  if(eshop == 'https://www.dedicatedbrand.com/en/women/all-women') {
     try {
       console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
       const products = await dedicatedbrand.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
@@ -51,7 +51,7 @@ async function sandbox_all_brand()
   }
 
   //montlimart
-  if(eshop = 'https://www.montlimart.com/99-vetements') {
+  if(eshop == 'https://www.montlimart.com/99-vetements') {
     try {
       console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
       const products = await montlimartbrand.scrape(eshop);
@@ -65,7 +65,7 @@ async function sandbox_all_brand()
   }
 
   //circle men
-  if(eshop = 'https://shop.circlesportswear.com/collections/collection-homme') {
+  if(eshop == 'https://shop.circlesportswear.com/collections/collection-homme') {
     try {
       console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
       const products = await circlebrand.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
@@ -80,7 +80,7 @@ async function sandbox_all_brand()
   }
 
   //dedicatedbrand men
-  if(eshop = 'https://shop.circlesportswear.com/collections/collection-femme') {
+  if(eshop == 'https://shop.circlesportswear.com/collections/collection-femme') {
     try {
       console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
       const products = await circlebrand.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
@@ -181,4 +181,4 @@ const [,, eshop] = process.argv;
 //sandbox_circle_women(eshop);
 
 const val = [{'':'', '':''}];
-ajout_mongoDB(val, "test");
+sandbox_all_brand();
