@@ -36,10 +36,10 @@ const parse = data => {
       );
 
       
+        const shopname = 'dedicated';
 
 
-
-      return {name, color, price};
+      return {shopname, name, color, price};
     })
     .get();
 };
