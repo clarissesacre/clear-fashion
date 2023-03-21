@@ -110,6 +110,7 @@ const [,, eshop] = process.argv;
 //sandbox_montlimart(eshop);
 //sandbox_circle(eshop);
 //sandbox_dedicated_women(eshop);
-sandbox_circle_women(eshop);
+//sandbox_circle_women(eshop);
 
-
+const val = [{'nom':'sacre', 'prenom':'clarisse'}];
+ajout_mongoDB(val, "test");
