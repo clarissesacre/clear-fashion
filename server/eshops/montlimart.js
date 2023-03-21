@@ -33,8 +33,9 @@ const parse = data => {
             .find('.price') // on prend le prix
             .text()
         );
+        const shopname = 'montlimart';
 
-      return {name, color, price};
+      return {shopname, name, color, price};
     })
     .get();
 };
