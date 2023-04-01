@@ -8,21 +8,38 @@ let currentPagination = {};
 
 
 // instantiate the selectors
+// select l'élément HTML "show-select" et le stocke dans selectShow.
+// show-select : prend le nombre d'article qu'on veut afficer (12/24/48)
 const selectShow = document.querySelector('#show-select');
 const selectPage = document.querySelector('#page-select');
+const selectBrand = document.querySelector('#brand-select');
+const selectSort = document.querySelector('#sort-select');
+
+
+// prend le nombre total de produits dispo (222)
 const sectionProducts = document.querySelector('#products');
 const spanNbProducts = document.querySelector('#nbProducts');
+const spanNbbrand = document.querySelector('#nbBrands');
 
+// pas touche
 /**
  * Set global value
- * @param {Array} result - products to display
- * @param {Object} meta - pagination meta info
+ * @param {Array} result - products to display 
+ * // tableau contenant les produits à afficher
+ * @param {Object} meta - pagination meta info 
+ * // objet contenant infos de pagination
+ * // nombre total de produits (count)
+ * // le nombre de pages (pageCount)
+ * // la page actuelle (currentPage), etc.
  */
 
+// met à jour currentproducts et currentpagination lorsqu'une nouvelle liste est récupérée depuis l'API
 const setCurrentProducts = ({result, meta}) => {
   currentProducts = result;
   currentPagination = meta;
 };
+
+
 
 /**
  * Fetch products from api
@@ -30,12 +47,21 @@ const setCurrentProducts = ({result, meta}) => {
  * @param  {Number}  [size=12] - size of the page
  * @return {Object}
  */
+
+// récupère une liste de produits depuis une API (grâce à fetch)
 const fetchProducts = async (page = 1, size = 12) => {
   try {
+    // récupère des données à partir de l'URL générée en urtilisant
+    // page = 1 et size = 12
     const response = await fetch(
-      `https://clear-fashion-api.vercel.app?page=${page}&size=${size}`
+      //`https://clear-fashion-api.vercel.app?page=${page}&size=${size}`
+      'https://clear-fashion-beige.vercel.app/'
     );
-    const body = await response.json();
+
+    // lit la réponse en tant que JSON
+    const body = await response.json(); 
+    allproducts=body;
+    console.log(allproducts);
 
     if (body.success !== true) {
       console.error(body);
@@ -53,10 +79,15 @@ const fetchProducts = async (page = 1, size = 12) => {
  * Render list of products
  * @param  {Array} products
  */
+
+// affiche une liste de produits
+
 const renderProducts = products => 
 {
   const fragment = document.createDocumentFragment();
   const div = document.createElement('div');
+  // parcourt tous les produits de 'products' donné en entrée
+  // renvoit un html représentant chaque
   const template = products
     .map(product => {
       return `
@@ -79,8 +110,11 @@ const renderProducts = products =>
  * Render page selector
  * @param  {Object} pagination
  */
+
+//
+
 const renderPagination = pagination => {
-  const {currentPage, pageCount} = pagination;
+  const {currentPage, pageCount} = pagination; // extrait currentpage, pagecount de pagination
   const options = Array.from(
     {'length': pageCount},
     (value, index) => `<option value="${index + 1}">${index + 1}</option>`
@@ -119,8 +153,8 @@ const render = (products, pagination) => {
 selectShow.addEventListener('change', async (event) => {
   const products = await fetchProducts(currentPagination.currentPage, parseInt(event.target.value));
 
-  setCurrentProducts(products);
-  render(currentProducts, currentPagination);
+  setCurrentProducts(products); 
+  render(currentProducts, currentPagination); 
 });
 
 
