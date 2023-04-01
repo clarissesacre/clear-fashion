@@ -19,6 +19,9 @@ async function add_to_mongoDB(products, shopName)
   console.log(`${products.length} products added in the databse ${shopName}`);
 }
 
+const products = await new_dedicated.scrape('https://www.dedicatedbrand.com/en/');
+
+/*
 const links_brands = ['https://www.dedicatedbrand.com/en/men/news','https://www.montlimart.com/99-vetements','https://shop.circlesportswear.com/collections/collection-homme'];
 
 async function sandbox_all_brand(eshop)
@@ -41,6 +44,8 @@ async function sandbox_all_brand(eshop)
       }
       add_to_mongoDB(prod, 'Dedicated')
     }
+
+
 
     //dedicatedbrand women
     if(eshop == 'https://www.dedicatedbrand.com/en/women/all-women') {
@@ -178,6 +183,7 @@ async function sandbox_circle_women (eshop = 'https://shop.circlesportswear.com/
   }
 }
 
+*/
 
 
 
@@ -189,5 +195,6 @@ const [,, eshop] = process.argv;
 //sandbox_circle(eshop);
 //sandbox_dedicated_women(eshop);
 //sandbox_circle_women(eshop);
+//sandbox_all_brand(all_brands);
 
-sandbox_all_brand(all_brands);
+
