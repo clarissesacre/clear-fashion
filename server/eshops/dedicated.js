@@ -36,8 +36,6 @@ const parse = data => {
       );
 
 
-
-      
       const shopname = 'dedicated';
 
       var link = $(element)
@@ -66,10 +64,7 @@ const parse = data => {
         category = category.split('/')[0];
       }
       
-
-      
-      
-
+ 
       return {shopname, name, color, price, for_who, category, final_link};
     })
     .get();
