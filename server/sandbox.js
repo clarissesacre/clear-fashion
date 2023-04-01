@@ -6,8 +6,10 @@ const dedicatedbrand = require('./eshops/dedicated'); // /eshops/dedicatedbrand 
 const montlimartbrand = require('./eshops/montlimart');
 const circlebrand = require('./eshops/circle');
 const category_dedicated = require('./eshops/category_dedicated');
+const category_montlimart = require('./eshops/category_montlimart');
 
-/*
+
+
 async function add_to_mongoDB(products, shopName)
 {
   const {MongoClient} = require('mongodb'); //import mongodb
@@ -19,9 +21,6 @@ async function add_to_mongoDB(products, shopName)
   const result = await collection.insertMany(products); // mets elements dans collection
   console.log(`${products.length} products added in the databse ${shopName}`);
 }
-*/
-
-
 
 
 async function sandbox_dedicated (eshop = 'https://www.dedicatedbrand.com/en/') {
@@ -45,49 +44,50 @@ async function sandbox_dedicated (eshop = 'https://www.dedicatedbrand.com/en/') 
       new_link = eshop + categories[i];
       console.log(`🕵️‍♀️ Browsing ${categories[i]} category`);
       products = await dedicatedbrand.scrape(new_link);
-      console.log(products);
-      //finalProducts = finalProducts.concat(products);
+      //console.log(products);      
     }
-
-
-    //console.log(products);
-
-    /*
-    men_categories = [];
-    women_categories = [];
-    kids_categories = [];
-
-    for(let i=0; i<categories.length;i++)
-    {
-      if(categories[i].search('men')==0)
-      {
-        men_categories.push(categories[i]);
-      }
-      if(categories[i].search('women')==0)
-      {
-        women_categories.push(categories[i]);
-      }
-      if(categories[i].search('kids')==0)
-      {
-        kids_categories.push(categories[i]);
-      }
-    }
-
-    console.log("men");
-    console.log(men_categories);
-    console.log("women");
-    console.log(women_categories);
-    console.log("kids");
-    console.log(kids_categories);
-    */
-
     process.exit(0);
   } catch (e) {
     console.error(e);
     process.exit(1);
   }
+  add_to_mongoDB(products, 'Dedicated')
 }
 
+
+async function sandbox_montlimart (eshop = 'https://www.montlimart.com/') {
+  try {
+    console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
+    // on va chercher toutes les catégories du site
+    // et retourne la fin du lien pour chaque categories
+    categories = await category_montlimart.scrape(eshop);
+    console.log(categories);
+    
+    /*
+    // supp element qui ne sont pas pour women/men ou kids
+    for(let i=0; i<categories.length;i++)
+    {
+      if(categories[i].search('men')==-1 & categories[i].search('kids')==-1)
+      {
+        categories = categories.splice(0,i);
+      }
+    }
+    
+    for(let i=0 ; i<categories.length;i++)
+    {
+      new_link = eshop + categories[i];
+      console.log(`🕵️‍♀️ Browsing ${categories[i]} category`);
+      products = await dedicatedbrand.scrape(new_link);
+      //console.log(products);      
+    }
+    */
+    process.exit(0);
+  } catch (e) {
+    console.error(e);
+    process.exit(1);
+  }
+  add_to_mongoDB(products, 'Dedicated')
+}
 
 
 
@@ -263,12 +263,12 @@ const [,, eshop] = process.argv;
 
 
 //sandbox_dedicated(eshop);
-//sandbox_montlimart(eshop);
+sandbox_montlimart(eshop);
 //sandbox_circle(eshop);
 //sandbox_dedicated_women(eshop);
 //sandbox_circle_women(eshop);
 //sandbox_all_brand(all_brands);
 
-sandbox_dedicated(eshop);
+//sandbox_dedicated(eshop);
 
 
