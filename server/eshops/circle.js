@@ -1,6 +1,5 @@
 // fonction pour scrapper
 
-// pour DEDICATED brand 
 // faire un truc comme ça par site
 // créer un autre .js pour les autres sites 
 
@@ -49,7 +48,8 @@ const parse = data => {
     .get();
 };
 
-// ça on s'en fou
+
+// pas touche
 /**
  * Scrape all the products for a given url page
  * @param  {[type]}  url
@@ -74,4 +74,4 @@ module.exports.scrape = async url => {
   }
 };
 
-// FIN DEDICATED brand
+
