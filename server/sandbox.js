@@ -54,15 +54,14 @@ async function sandbox_dedicated (eshop = 'https://www.dedicatedbrand.com/en/') 
   add_to_mongoDB(products, 'Dedicated')
 }
 
-
-async function sandbox_montlimart (eshop = 'https://www.montlimart.com/') {
+async function sandbox_montlimart (eshop = 'https://www.circlesportswear.com/') {
   try {
     console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
     // on va chercher toutes les catégories du site
     // et retourne la fin du lien pour chaque categories
-    categories = await category_montlimart.scrape(eshop);
+    categories = await category_circle.scrape(eshop);
     console.log(categories);
-    
+
     /*
     // supp element qui ne sont pas pour women/men ou kids
     for(let i=0; i<categories.length;i++)
@@ -86,7 +85,42 @@ async function sandbox_montlimart (eshop = 'https://www.montlimart.com/') {
     console.error(e);
     process.exit(1);
   }
-  add_to_mongoDB(products, 'Dedicated')
+  //add_to_mongoDB(products, 'Dedicated')
+}
+
+
+async function sandbox_montlimart (eshop = 'https://www.montlimart.com/') {
+  try {
+    console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
+    // on va chercher toutes les catégories du site
+    // et retourne la fin du lien pour chaque categories
+    categories = await category_montlimart.scrape(eshop);
+    console.log(categories);
+
+    /*
+    // supp element qui ne sont pas pour women/men ou kids
+    for(let i=0; i<categories.length;i++)
+    {
+      if(categories[i].search('men')==-1 & categories[i].search('kids')==-1)
+      {
+        categories = categories.splice(0,i);
+      }
+    }
+    
+    for(let i=0 ; i<categories.length;i++)
+    {
+      new_link = eshop + categories[i];
+      console.log(`🕵️‍♀️ Browsing ${categories[i]} category`);
+      products = await dedicatedbrand.scrape(new_link);
+      //console.log(products);      
+    }
+    */
+    process.exit(0);
+  } catch (e) {
+    console.error(e);
+    process.exit(1);
+  }
+  //add_to_mongoDB(products, 'Dedicated')
 }
 
 
