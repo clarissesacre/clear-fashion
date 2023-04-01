@@ -38,16 +38,36 @@ const parse = data => {
 
         var color = $(element)
         .find('.color-variant')
-        //.getAttribute(data-color)
-        .text()
-        .trim();
+        .attr('data-color');
         const shopname = 'circle';
 
         var link = $(element)
-        .find('.card_characteristic')
+        .find('.full-unstyled-link')
         .attr('href');
+        final_link = "https://shop.circlesportswear.com" +link;
+        
+        
+      var for_who= '';
+      var category= '';
+      
+      /*
+      if(link.search('homme')==0)
+      {
+        for_who = 'men';
+        //category = link.replace('/en/kids/','');
+        //category = category.split('/')[0];
+      }
+      if(link.search('femme')==0)
+      {
+        for_who = 'women';
+        //category = link.replace('/en/kids/','');
+        //category = category.split('/')[0];
+      }
+      */
+      
+      
 
-      return {shopname, name, color, price, link};
+      return {shopname, name, color, price, for_who, category, final_link};
     })
     .get();
 };
