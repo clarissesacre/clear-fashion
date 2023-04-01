@@ -1,12 +1,13 @@
 /* eslint-disable no-console, no-process-exit */
 // programme principal
 
-console.log('coucou');
+
 const dedicatedbrand = require('./eshops/dedicated'); // /eshops/dedicatedbrand : chemin à gauche pour trouver la fonction à appeler
 const montlimartbrand = require('./eshops/montlimart');
 const circlebrand = require('./eshops/circle');
-const new_dedicated = require('./eshops/new_dedicated');
+const category_dedicated = require('./eshops/category_dedicated');
 
+/*
 async function add_to_mongoDB(products, shopName)
 {
   const {MongoClient} = require('mongodb'); //import mongodb
@@ -18,17 +19,68 @@ async function add_to_mongoDB(products, shopName)
   const result = await collection.insertMany(products); // mets elements dans collection
   console.log(`${products.length} products added in the databse ${shopName}`);
 }
+*/
 
-console.log('before');
+
+
 
 async function sandbox_dedicated (eshop = 'https://www.dedicatedbrand.com/en/') {
   try {
     console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
+    // on va chercher toutes les catégories du site
+    // et retourne la fin du lien pour chaque categories
+    categories = await category_dedicated.scrape(eshop);
+    
+    // supp element qui ne sont pas pour women/men ou kids
+    for(let i=0; i<categories.length;i++)
+    {
+      if(categories[i].search('men')==-1 & categories[i].search('kids')==-1)
+      {
+        categories = categories.splice(0,i);
+      }
+    }
+    
+    for(let i=0 ; i<categories.length;i++)
+    {
+      new_link = eshop + categories[i];
+      console.log(`🕵️‍♀️ Browsing ${categories[i]} category`);
+      products = await dedicatedbrand.scrape(new_link);
+      console.log(products);
+      //finalProducts = finalProducts.concat(products);
+    }
 
-    categories = await new_dedicated.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
 
     //console.log(products);
-    //console.log('done');
+
+    /*
+    men_categories = [];
+    women_categories = [];
+    kids_categories = [];
+
+    for(let i=0; i<categories.length;i++)
+    {
+      if(categories[i].search('men')==0)
+      {
+        men_categories.push(categories[i]);
+      }
+      if(categories[i].search('women')==0)
+      {
+        women_categories.push(categories[i]);
+      }
+      if(categories[i].search('kids')==0)
+      {
+        kids_categories.push(categories[i]);
+      }
+    }
+
+    console.log("men");
+    console.log(men_categories);
+    console.log("women");
+    console.log(women_categories);
+    console.log("kids");
+    console.log(kids_categories);
+    */
+
     process.exit(0);
   } catch (e) {
     console.error(e);
@@ -37,7 +89,6 @@ async function sandbox_dedicated (eshop = 'https://www.dedicatedbrand.com/en/') 
 }
 
 
-console.log('after');
 
 
 /*
