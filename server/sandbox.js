@@ -1,7 +1,7 @@
 /* eslint-disable no-console, no-process-exit */
 // programme principal
 
-
+console.log('coucou');
 const dedicatedbrand = require('./eshops/dedicated'); // /eshops/dedicatedbrand : chemin à gauche pour trouver la fonction à appeler
 const montlimartbrand = require('./eshops/montlimart');
 const circlebrand = require('./eshops/circle');
