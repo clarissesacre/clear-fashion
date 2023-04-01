@@ -17,11 +17,12 @@ const parse = data => {
   const $ = cheerio.load(data);
 
   // on prend toutes les sous catégories du site : tshirt, pantalon etc.
-  return $('.js-top-menu* .adtm_column*')
+  return $('.js-top-menu* .column_wrap_title*')
     .map((i, element) => {
       var category = $(element)
       .find('a')
       .prop("href");
+      console.log('o')
       return [category]; //return la liste de toutes les catégories
     })
     .get();
