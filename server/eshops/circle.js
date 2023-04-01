@@ -43,7 +43,11 @@ const parse = data => {
         .trim();
         const shopname = 'circle';
 
-      return {shopname, name, color, price};
+        var link = $(element)
+        .find('.card_characteristic')
+        .attr('href');
+
+      return {shopname, name, color, price, link};
     })
     .get();
 };
