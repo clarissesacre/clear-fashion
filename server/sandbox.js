@@ -22,7 +22,7 @@ async function add_to_mongoDB(products, shopName)
   console.log(`${products.length} products added in the databse ${shopName}`);
 }
 
-const links_brands = ['https://www.dedicatedbrand.com/en/','https://www.circlesportswear.com/','https://www.montlimart.com/'];
+const links_brands = ['https://www.circlesportswear.com/','https://www.montlimart.com/','https://www.dedicatedbrand.com/en/'];
 
 
 async function sandbox_dedicated (eshop = 'https://www.dedicatedbrand.com/en/') {
@@ -138,6 +138,62 @@ async function sandbox_all_brand(eshop)
   for(let i=0; i<links_brands.length;i++)
   {
     eshop = links_brands[i];
+
+    
+    //circle 
+    if(eshop == 'https://www.circlesportswear.com/') {
+      prod = {};
+      try {
+        console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
+        // on va chercher toutes les catégories du site
+        // et retourne la fin du lien pour chaque categories
+        categories = await category_circle.scrape(eshop);
+        
+        // supp element qui ne sont pas pour men
+        categories.splice(-11);
+        delete categories[14];
+
+        for(let i=0 ; i<categories.length;i++)
+        {
+          if(categories[i] != null)
+          {
+            new_link = categories[i];
+            console.log(`🕵️‍♀️ Browsing ${categories[i]} category`);
+            products = await circlebrand.scrape(new_link);
+            
+            for(let j=0 ; j<products.length;j++)
+            {
+              // 'for_who' 
+              if(i<=17)
+              {
+                products[j].for_who='women';
+              }
+              if(i>17)
+              {
+                products[j].for_who='men'; 
+              }
+              // 'category' 
+              products[j].category= categories[i].split('/')[4];
+            } 
+            console.log(products);
+          }   
+        }
+        
+        prod = products;
+      } catch (e) {
+        console.error(e);
+        process.exit(1);
+      }
+      //await add_to_mongoDB(prod, 'Circle')
+    }
+
+
+
+
+
+
+
+
     //dedicatedbrand
 
 
@@ -173,7 +229,7 @@ async function sandbox_all_brand(eshop)
         console.error(e);
         process.exit(1);
       }
-      add_to_mongoDB(prod, 'Dedicated')
+      //add_to_mongoDB(prod, 'Dedicated')
     }
 
     
@@ -206,57 +262,11 @@ async function sandbox_all_brand(eshop)
         console.error(e);
         process.exit(1);
       }
-      await add_to_mongoDB(prod, 'Montlimart')
+      //await add_to_mongoDB(prod, 'Montlimart')
     }
 
 
 
-
-    //circle 
-    if(eshop == 'https://shop.circlesportswear.com/') {
-      prod = {};
-      try {
-        console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
-        // on va chercher toutes les catégories du site
-        // et retourne la fin du lien pour chaque categories
-        categories = await category_circle.scrape(eshop);
-        
-        // supp element qui ne sont pas pour men
-        categories.splice(-11);
-        delete categories[14];
-
-        for(let i=0 ; i<categories.length;i++)
-        {
-          if(categories[i] != null)
-          {
-            new_link = categories[i];
-            console.log(`🕵️‍♀️ Browsing ${categories[i]} category`);
-            products = await circlebrand.scrape(new_link);
-            
-            for(let j=0 ; j<products.length;j++)
-            {
-              // 'for_who' 
-              if(i<=17)
-              {
-                products[j].for_who='women';
-              }
-              if(i>17)
-              {
-                products[j].for_who='men'; 
-              }
-              // 'category' 
-              products[j].category= categories[i].split('/')[4];
-            } 
-          }   
-        }
-        console.log(products);
-        prod = products;
-      } catch (e) {
-        console.error(e);
-        process.exit(1);
-      }
-      await add_to_mongoDB(prod, 'Circle')
-    }
 
     
   }
