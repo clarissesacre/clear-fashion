@@ -140,7 +140,9 @@ async function sandbox_all_brand(eshop)
     eshop = links_brands[i];
     var all_products = [];
 
+    
     //circle 
+    var all_products_circle = [];
     if(eshop == 'https://www.circlesportswear.com/') {
       prod = {};
       try {
@@ -177,9 +179,12 @@ async function sandbox_all_brand(eshop)
             } 
             //console.log(products);
             all_products = all_products.concat(products);
+            all_products_circle = all_products_circle.concat(products);
           }   
         }
-        await add_to_mongoDB(all_products,"circle");
+        await add_to_mongoDB(all_products_circle,"circle");
+        
+        
       } catch (e) {
         console.error(e);
         process.exit(1);
@@ -187,8 +192,9 @@ async function sandbox_all_brand(eshop)
       
     }
     
-    all_products = [];
+    
     //dedicated
+    all_products_dedicated = [];
     if(eshop == 'https://www.dedicatedbrand.com/en/')
     {
       prod = {};
@@ -215,9 +221,11 @@ async function sandbox_all_brand(eshop)
           products = await dedicatedbrand.scrape(new_link);
           //console.log(products);     
           all_products = all_products.concat(products); 
+          all_products_dedicated = all_products_dedicated.concat(products); 
         }
       
-      await add_to_mongoDB(all_products, 'dedicated')
+      
+      await add_to_mongoDB(all_products_dedicated, 'dedicated');
       
       } catch (e) {
         console.error(e);
@@ -226,8 +234,9 @@ async function sandbox_all_brand(eshop)
       
     }
     
-    all_products = [];
+    
     //montlimart
+    all_products_montlimart = [];
     if(eshop == 'https://www.montlimart.com/') {
       prod = {};
       try {
@@ -247,8 +256,9 @@ async function sandbox_all_brand(eshop)
           products = await montlimartbrand.scrape(new_link);
           //console.log(products);
           all_products = all_products.concat(products); 
+          all_products_montlimart = all_products_montlimart.concat(products); 
         }
-      await add_to_mongoDB(all_products, 'montlimart')      
+      await add_to_mongoDB(all_products_montlimart, 'montlimart')  ;    
 
       } catch (e) {
         console.error(e);
@@ -256,7 +266,7 @@ async function sandbox_all_brand(eshop)
       }
       
     }
-
+    await add_to_mongoDB(all_products, 'all_brands') ;
     
   }
   process.exit(0);
