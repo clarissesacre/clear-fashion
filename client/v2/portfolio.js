@@ -121,37 +121,22 @@ selectShow.addEventListener('change', async (event) => {
 
   setCurrentProducts(products);
   render(currentProducts, currentPagination);
-  selectPage.addEventListener('change', async (event) => 
-  {
-    const products = await fetchProducts( parseInt(event.target.value),currentPagination.pageSize);
-  
-    setCurrentProducts(products);
-    render(currentProducts, currentPagination);
-  });
-
-  /**
- * Select the pages to display (Feature 1)
- */
-selectPage.addEventListener('change', async (event) => {
-  
-  const products = await fetchProducts( parseInt(event.target.value),currentPagination.pageSize);
-
-  setCurrentProducts(products);
-  render(currentProducts, currentPagination);
-
-  selectShow.addEventListener('change', async (event) => {
-    const products = await fetchProducts(currentPagination.currentPage, parseInt(event.target.value));
-  
-    setCurrentProducts(products);
-    render(currentProducts, currentPagination);
-  
-    
-  });
-  
 });
 
+/**
+ * Filter by brand (Feature 2)
+ */
+selectBrand.addEventListener('change', async (event) => {
+  let pagesize = Object.assign({},currentPagination);
+  const products = await fetchProducts(currentPagination.currentPage,currentPagination.count);
+  products.result = bybrand(products.result);
 
-
+  setCurrentProducts(products);
+  render(currentProducts, pagesize);
+  
+  
+  
+});
 
 
 
