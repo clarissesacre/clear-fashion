@@ -113,7 +113,7 @@ const render = (products, pagination) => {
  */
 const bybrand = products =>{
   
-  const result = products.filter(product => product.brand == selectBrand.value);
+  const result = products.filter(product => product.shopname == selectBrand.value);
   return result;
 }
 
