@@ -20,7 +20,23 @@ async function add_to_mongoDB(products, shopName)
 }
 
 console.log('before');
-const products = await new_dedicated.scrape('https://www.dedicatedbrand.com/en/');
+
+async function sandbox_dedicated (eshop = 'https://www.dedicatedbrand.com/en/') {
+  try {
+    console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
+
+    const products = await new_dedicated.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
+
+    //console.log(products);
+    //console.log('done');
+    process.exit(0);
+  } catch (e) {
+    console.error(e);
+    process.exit(1);
+  }
+}
+
+
 console.log('after');
 
 
@@ -201,5 +217,7 @@ const [,, eshop] = process.argv;
 //sandbox_dedicated_women(eshop);
 //sandbox_circle_women(eshop);
 //sandbox_all_brand(all_brands);
+
+sandbox_dedicated(eshop);
 
 
