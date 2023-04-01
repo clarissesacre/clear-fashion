@@ -5,7 +5,7 @@ console.log('coucou');
 const dedicatedbrand = require('./eshops/dedicated'); // /eshops/dedicatedbrand : chemin à gauche pour trouver la fonction à appeler
 const montlimartbrand = require('./eshops/montlimart');
 const circlebrand = require('./eshops/circle');
-
+const new_dedicated = require('./eshops/new_dedicated');
 
 async function add_to_mongoDB(products, shopName)
 {
@@ -25,7 +25,7 @@ async function sandbox_dedicated (eshop = 'https://www.dedicatedbrand.com/en/') 
   try {
     console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
 
-    const products = await new_dedicated.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
+    categories = await new_dedicated.scrape(eshop); // lance dedicatedbrand.js puis affiche les produits
 
     //console.log(products);
     //console.log('done');
