@@ -7,7 +7,7 @@ const montlimartbrand = require('./eshops/montlimart');
 const circlebrand = require('./eshops/circle');
 const category_dedicated = require('./eshops/category_dedicated');
 const category_montlimart = require('./eshops/category_montlimart');
-
+const category_circle = require('./eshops/category_circle');
 
 
 async function add_to_mongoDB(products, shopName)
@@ -29,7 +29,8 @@ async function sandbox_dedicated (eshop = 'https://www.dedicatedbrand.com/en/') 
     // on va chercher toutes les catégories du site
     // et retourne la fin du lien pour chaque categories
     categories = await category_dedicated.scrape(eshop);
-    
+    //console.log(categories);
+
     // supp element qui ne sont pas pour women/men ou kids
     for(let i=0; i<categories.length;i++)
     {
@@ -54,32 +55,13 @@ async function sandbox_dedicated (eshop = 'https://www.dedicatedbrand.com/en/') 
   add_to_mongoDB(products, 'Dedicated')
 }
 
-async function sandbox_montlimart (eshop = 'https://www.circlesportswear.com/') {
+async function sandbox_circle (eshop = 'https://shop.circlesportswear.com') {
   try {
     console.log(`🕵️‍♀️  browsing ${eshop} eshop`);
     // on va chercher toutes les catégories du site
     // et retourne la fin du lien pour chaque categories
     categories = await category_circle.scrape(eshop);
     console.log(categories);
-
-    /*
-    // supp element qui ne sont pas pour women/men ou kids
-    for(let i=0; i<categories.length;i++)
-    {
-      if(categories[i].search('men')==-1 & categories[i].search('kids')==-1)
-      {
-        categories = categories.splice(0,i);
-      }
-    }
-    
-    for(let i=0 ; i<categories.length;i++)
-    {
-      new_link = eshop + categories[i];
-      console.log(`🕵️‍♀️ Browsing ${categories[i]} category`);
-      products = await dedicatedbrand.scrape(new_link);
-      //console.log(products);      
-    }
-    */
     process.exit(0);
   } catch (e) {
     console.error(e);
@@ -297,8 +279,8 @@ const [,, eshop] = process.argv;
 
 
 //sandbox_dedicated(eshop);
-sandbox_montlimart(eshop);
-//sandbox_circle(eshop);
+//sandbox_montlimart(eshop);
+sandbox_circle(eshop);
 //sandbox_dedicated_women(eshop);
 //sandbox_circle_women(eshop);
 //sandbox_all_brand(all_brands);
