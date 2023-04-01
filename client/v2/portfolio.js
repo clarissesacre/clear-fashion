@@ -18,6 +18,7 @@ const spanNbProducts = document.querySelector('#nbProducts');
  * @param {Array} result - products to display
  * @param {Object} meta - pagination meta info
  */
+
 const setCurrentProducts = ({result, meta}) => {
   currentProducts = result;
   currentPagination = meta;
@@ -52,7 +53,8 @@ const fetchProducts = async (page = 1, size = 12) => {
  * Render list of products
  * @param  {Array} products
  */
-const renderProducts = products => {
+const renderProducts = products => 
+{
   const fragment = document.createDocumentFragment();
   const div = document.createElement('div');
   const template = products
@@ -103,6 +105,17 @@ const render = (products, pagination) => {
   renderPagination(pagination);
   renderIndicators(pagination);
 };
+
+
+/**
+ * Filter by brand
+ * @param  {Object} products
+ */
+const bybrand = products =>{
+  
+  const result = products.filter(product => product.brand == selectBrand.value);
+  return result;
+}
 
 /**
  * Declaration of all Listeners
