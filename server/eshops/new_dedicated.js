@@ -20,7 +20,6 @@ const parse = data => {
   const $ = cheerio.load(data);
 
   // d'abord on prend toutes les sous catégories du site : tshirt, pantalon etc.
-  console.log("Here is all the categories of circle's products");
   return $('.mainNavigation-fixedContainer .mainNavigation-link-subMenu-link*')
     .map((i, element) => {
       var category = $(element)
