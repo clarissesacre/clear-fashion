@@ -77,22 +77,22 @@ async function sandbox_montlimart (eshop = 'https://www.montlimart.com/') {
     // on va chercher toutes les catégories du site
     // et retourne la fin du lien pour chaque categories
     categories = await category_montlimart.scrape(eshop);
-    console.log(categories);
 
-    // supp element qui ne sont pas pour women/men ou kids
+    // supp element qui ne sont pas pour men
     categories.splice(-4);
     console.log(categories);
     
 
-    /*
+    
     for(let i=0 ; i<categories.length;i++)
     {
-      new_link = eshop + categories[i];
+      new_link = categories[i];
       console.log(`🕵️‍♀️ Browsing ${categories[i]} category`);
-      products = await dedicatedbrand.scrape(new_link);
-      //console.log(products);      
+      products = await montlimartbrand.scrape(new_link);
+      console.log(products);      
     }
-    */
+    
+    
     process.exit(0);
   } catch (e) {
     console.error(e);
