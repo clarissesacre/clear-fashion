@@ -1,11 +1,10 @@
-// fonction pour scrapper
-
+// fonction pour scrapper les CATEGORIES 
 // pour DEDICATED brand 
+
 // faire un truc comme ça par site
 // créer un autre .js pour les autres sites 
 
 // on envoie le link initial : eshop = https://www.dedicatedbrand.com/en/
-// const products = await new_dedicated.scrape(eshop); 
       
 
 const fetch = require('node-fetch');
@@ -19,7 +18,7 @@ const cheerio = require('cheerio');
 const parse = data => {
   const $ = cheerio.load(data);
 
-  // d'abord on prend toutes les sous catégories du site : tshirt, pantalon etc.
+  // on prend toutes les sous catégories du site : tshirt, pantalon etc.
   return $('.mainNavigation-fixedContainer .mainNavigation-link-subMenu-link*')
     .map((i, element) => {
       var category = $(element)
