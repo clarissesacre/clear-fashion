@@ -179,7 +179,7 @@ async function sandbox_all_brand(eshop)
             all_products = all_products.concat(products);
           }   
         }
-        await add_to_mongoDB(all_products,"circle3");
+        await add_to_mongoDB(all_products,"circle");
       } catch (e) {
         console.error(e);
         process.exit(1);
@@ -217,7 +217,7 @@ async function sandbox_all_brand(eshop)
           all_products = all_products.concat(products); 
         }
       
-      await add_to_mongoDB(all_products, 'dedicated3')
+      await add_to_mongoDB(all_products, 'dedicated')
       
       } catch (e) {
         console.error(e);
@@ -248,7 +248,7 @@ async function sandbox_all_brand(eshop)
           //console.log(products);
           all_products = all_products.concat(products); 
         }
-      await add_to_mongoDB(products, 'montlimart3')      
+      await add_to_mongoDB(all_products, 'montlimart')      
 
       } catch (e) {
         console.error(e);
