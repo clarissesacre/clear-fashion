@@ -9,15 +9,12 @@ const cheerio = require('cheerio');
  */
 const parse = data => {
   const $ = cheerio.load(data);
-  return $('.wrapper-link-menu* .wrapper-*')
-    .map((i, element) => {
-      var category = $(element)
-      .find('a')
-      .prop("href");
-      console.log(category);
-      return [category];
-    })
+  return $('.content-dropdown-menu .menu-colonne-sub-title a')
+  .map((i,element) => {
+    return $(element).attr('href');
+  }) 
     .get();
+    
 };
 
 /**
