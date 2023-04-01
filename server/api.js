@@ -30,12 +30,12 @@ app.get('/', (request, response) => {
   response.send({'ack': false});
 });
 
-
-app.get('/category_circle', async (request, response) => {
+// affiche les categories des produits chez circle
+app.get('/brands', async (request, response) => {
   try{
     const client = getClient();
-    const collection = client.db("ClusterClearFashion").collection("circle");
-    const found = await collection.distinct('category');
+    const collection = client.db("ClusterClearFashion").collection("all_brands");
+    const found = await collection.distinct('shopname');
     //response.send({brands: found});
     response.json(found);
   }
@@ -43,6 +43,7 @@ app.get('/category_circle', async (request, response) => {
     response.send({error : "Couldn't fetch brands"}); 
   }
 });
+
 
 app.get('/products', async (request, response) => {
   const client = getClient();
