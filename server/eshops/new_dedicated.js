@@ -26,11 +26,9 @@ const parse = data => {
       var category = $(element)
       .find('a')
       .prop("href");
-      console.log(category);
-      category = category.slice(4);
-      console.log('after slice');
-      console.log(category);
-      return [category];
+      category = category.replace('/en/','') // on enlève le /en/
+      //console.log(category);
+      return [category]; //return la liste de toutes les catégories
     })
     .get();
 };
