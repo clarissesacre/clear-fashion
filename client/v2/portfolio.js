@@ -123,20 +123,6 @@ selectShow.addEventListener('change', async (event) => {
   render(currentProducts, currentPagination);
 });
 
-/**
- * Filter by brand (Feature 2)
- */
-selectBrand.addEventListener('change', async (event) => {
-  let pagesize = Object.assign({},currentPagination);
-  const products = await fetchProducts(currentPagination.currentPage,currentPagination.count);
-  products.result = bybrand(products.result);
-
-  setCurrentProducts(products);
-  render(currentProducts, pagesize);
-  
-  
-  
-});
 
 
 
