@@ -19,7 +19,10 @@ async function add_to_mongoDB(products, shopName)
   console.log(`${products.length} products added in the databse ${shopName}`);
 }
 
+console.log('before');
 const products = await new_dedicated.scrape('https://www.dedicatedbrand.com/en/');
+console.log('after');
+
 
 /*
 const links_brands = ['https://www.dedicatedbrand.com/en/men/news','https://www.montlimart.com/99-vetements','https://shop.circlesportswear.com/collections/collection-homme'];
@@ -189,6 +192,8 @@ async function sandbox_circle_women (eshop = 'https://shop.circlesportswear.com/
 
 
 const [,, eshop] = process.argv;
+
+
 
 //sandbox_dedicated(eshop);
 //sandbox_montlimart(eshop);
