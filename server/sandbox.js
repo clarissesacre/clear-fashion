@@ -79,16 +79,12 @@ async function sandbox_montlimart (eshop = 'https://www.montlimart.com/') {
     categories = await category_montlimart.scrape(eshop);
     console.log(categories);
 
-    /*
     // supp element qui ne sont pas pour women/men ou kids
-    for(let i=0; i<categories.length;i++)
-    {
-      if(categories[i].search('men')==-1 & categories[i].search('kids')==-1)
-      {
-        categories = categories.splice(0,i);
-      }
-    }
+    categories.splice(-4);
+    console.log(categories);
     
+
+    /*
     for(let i=0 ; i<categories.length;i++)
     {
       new_link = eshop + categories[i];
@@ -279,8 +275,8 @@ const [,, eshop] = process.argv;
 
 
 //sandbox_dedicated(eshop);
-//sandbox_montlimart(eshop);
-sandbox_circle(eshop);
+sandbox_montlimart(eshop);
+//sandbox_circle(eshop);
 //sandbox_dedicated_women(eshop);
 //sandbox_circle_women(eshop);
 //sandbox_all_brand(all_brands);
