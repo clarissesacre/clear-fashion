@@ -107,15 +107,7 @@ const render = (products, pagination) => {
 };
 
 
-/**
- * Filter by brand
- * @param  {Object} products
- */
-const bybrand = products =>{
-  
-  const result = products.filter(product => product.shopname == selectBrand.value);
-  return result;
-}
+
 
 /**
  * Declaration of all Listeners
@@ -129,7 +121,39 @@ selectShow.addEventListener('change', async (event) => {
 
   setCurrentProducts(products);
   render(currentProducts, currentPagination);
+  selectPage.addEventListener('change', async (event) => 
+  {
+    const products = await fetchProducts( parseInt(event.target.value),currentPagination.pageSize);
+  
+    setCurrentProducts(products);
+    render(currentProducts, currentPagination);
+  });
+
+  /**
+ * Select the pages to display (Feature 1)
+ */
+selectPage.addEventListener('change', async (event) => {
+  
+  const products = await fetchProducts( parseInt(event.target.value),currentPagination.pageSize);
+
+  setCurrentProducts(products);
+  render(currentProducts, currentPagination);
+
+  selectShow.addEventListener('change', async (event) => {
+    const products = await fetchProducts(currentPagination.currentPage, parseInt(event.target.value));
+  
+    setCurrentProducts(products);
+    render(currentProducts, currentPagination);
+  
+    
+  });
+  
 });
+
+
+
+
+
 
 document.addEventListener('DOMContentLoaded', async () => {
   const products = await fetchProducts();
