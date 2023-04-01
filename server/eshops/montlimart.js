@@ -35,7 +35,19 @@ const parse = data => {
         );
         const shopname = 'montlimart';
 
-      return {shopname, name, color, price};
+        const final_link = $(element)
+       .find('.text-reset')
+       .attr('href');
+
+       const for_who = 'men';
+        
+       var category='';
+       category = final_link.replace('https://www.montlimart.com/','');
+       category = category.split('/')[0];
+       
+
+       return {shopname, name, color, price, for_who, category, final_link};
+
     })
     .get();
 };
