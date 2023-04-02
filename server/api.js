@@ -191,7 +191,7 @@ app.get('/products/id', async (request, response) => {
 	  response.send({error : "ID not found"});  
   }
 });
-
+/*
 app.get('/sorted', async (request, response) => {
   const client = getClient();
   const collection = client.db("ClusterClearFashion").collection("all_brands");
@@ -212,7 +212,7 @@ app.get('/sorted', async (request, response) => {
 
   response.json(result);
 });
-
+*/
 
 app.listen(PORT);
 
