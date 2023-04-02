@@ -36,7 +36,7 @@ const parse = data => {
       );
 
 
-      const shopname = 'dedicated';
+      const brand = 'dedicated';
 
       var link = $(element)
       .find('.productList-link')
@@ -69,7 +69,7 @@ const parse = data => {
       .attr('data-src');
       
  
-      return {shopname, name, color, price, for_who, category, final_link, image};
+      return {brand, name, color, price, for_who, category, final_link, image};
     })
     .get();
 };
