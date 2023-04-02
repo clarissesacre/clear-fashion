@@ -37,7 +37,7 @@ const sectionFavoriteProducts = document.querySelector('#favoriteProducts');
 // affiche les produits avec possibilité de filtrage 
 const fetchProducts = async (show=12, page=1, brand="",price=""/*,sex=""*/) => {
   try {
-    let url = `http://localhost:8092/products/search?page=${page}&limit=${show}&brand=${brand}&price=${price}`;// &sex=${sex}
+    let url = `http://localhost:8092/products/price?page=${page}&limit=${show}&brand=${brand}&price=${price}`;// &sex=${sex}
     console.log(url);
     const response = await fetch(url);
     const body = await response.json();
