@@ -335,7 +335,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   selectSex.innerHTML = sexes;
 
-  const category_names = await fetchSex();
+
+
+  const category_names = await fetchCategory();
   
   sex_names.unshift("All");
   const categories = Array.from(
@@ -343,7 +345,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     value => `<option value="${value}">${value}</option>`
   ).join('');
 
-  selectSex.innerHTML = categories;
+  selectCategory.innerHTML = categories;
 
 
 
