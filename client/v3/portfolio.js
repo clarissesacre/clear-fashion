@@ -203,14 +203,14 @@ selectSex.addEventListener('change', async (event) => {
 selectPrice.addEventListener('change', async (event) => {
   price = event.target.value;
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,sex=sex)
+  let products = await fetchProducts(show=show, page=page, brand="", price=price,sex="")
   renderSearchProducts(products);
 });
 
 selectSort.addEventListener('change', async (event) => {
   sort = event.target.value;
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,sex=sex)
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,sex="")
   renderSearchProducts(products);
 });
 
