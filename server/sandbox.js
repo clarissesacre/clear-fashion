@@ -10,16 +10,16 @@ const category_montlimart = require('./eshops/category_montlimart');
 const category_circle = require('./eshops/category_circle');
 
 
-async function add_to_mongoDB(products, shopName)
+async function add_to_mongoDB(products, brand)
 {
   const {MongoClient} = require('mongodb'); //import mongodb
   const MONGODB_URI = 'mongodb+srv://clarissesacre:clarisse@clusterclearfashion.7kttiwq.mongodb.net/test?retryWrites=true&w=majority';
   const MONGODB_DB_NAME = 'ClusterClearFashion';
   const client = await MongoClient.connect(MONGODB_URI, {'useNewUrlParser': true});
   const db =  client.db(MONGODB_DB_NAME); // connect à notre base de donnée
-  const collection = db.collection(shopName); // crée une sous database dans clusterclearfashion
+  const collection = db.collection(brand); // crée une sous database dans clusterclearfashion
   const result = await collection.insertMany(products); // mets elements dans collection
-  console.log(`${products.length} products added in the databse ${shopName}`);
+  console.log(`${products.length} products added in the databse ${brand}`);
 }
 
 const links_brands = ['https://www.circlesportswear.com/','https://www.montlimart.com/','https://www.dedicatedbrand.com/en/'];
