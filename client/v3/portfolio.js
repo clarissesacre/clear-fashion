@@ -7,7 +7,7 @@ let show = 12;
 let page = 1;
 let brand = 'All';
 let price = 'All';
-let sort = 'Cheapest';
+let sort = 'Cheapest to most expensive';
 let favorite_products = [];
 const current_date = Date.now();
 
@@ -33,7 +33,6 @@ const sectionFavoriteProducts = document.querySelector('#favoriteProducts');
 
 const fetchProducts = async (show=12, page=1, brand="",price="") => {
   try {
-    ///let url = `https://clear-fashion-ashen-six.vercel.app/products/search?show=${show}&page=${page}`;
     let url = `http://localhost:8092/products/search?page=${page}&limit=${show}&brand=${brand}&price=${price}`;
     console.log(url);
     const response = await fetch(url);
@@ -117,10 +116,10 @@ const renderSearchProducts = products => {
     .map(product => {
       return `
       <div class="product" id=${product._id}>
-        <span>${product.brand}</span>
+        <span>${product.shopname}</span>
         <a href="${product.link}" target="_blank">${product.name}</a>
         <span>${product.price}€</span>
-        <span>${product.caracteristique}</span>
+        <span>${product.image}</span>
         <button onclick="changeFavorite('${product._id}')">${textFavorite(product._id)}</button>
       </div>
     `;
