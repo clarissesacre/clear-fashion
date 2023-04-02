@@ -13,7 +13,7 @@
       h2 {
         font-family: Arial, sans-serif;
         font-size: 6px;
-        color:burlywood;
+        color:brown;
         text-align: center;
       }
       h3 {
@@ -56,6 +56,10 @@
             <label for="brand-select">By brand:</label>
             <select name="brand" id="brand-select"> </select>
           </div>
+          <div id="sex">
+            <label for="sex-select">By sex:</label>
+            <select name="sex" id="sex-select"> </select>
+          </div>
           <div id="price">
             <label for="price-select">Maximum price:</label>
             <select name="price" id="price-select">
@@ -63,6 +67,7 @@
               <option value="50">50</option>
               <option value="100">100</option>
             </select>
+
           </div>
         </div>
         <div id="sort">
@@ -74,7 +79,7 @@
         </div>
       </section>
       <section class="grid-child" id="indicators">
-        <h4>Indicators</h4>
+        <h3>Indicators</h3>
         <div>
           <span>Number of products:</span>
           <span id="nbProducts"></span>
