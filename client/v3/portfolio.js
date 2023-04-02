@@ -220,7 +220,7 @@ selectBrand.addEventListener('change', async (event) => {
     brand="";
   }
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who, category=category)
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who)
   renderSearchProducts(products);
 });
 
@@ -258,6 +258,7 @@ selectBrand.addEventListener('change', async (event) => {
   let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who)
   renderSearchProducts(products);
 });
+
 /*
 selectCategory.addEventListener('change', async (event) => {
   category = event.target.value;
