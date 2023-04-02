@@ -288,10 +288,10 @@ const [,, eshop] = process.argv;
 
 //sandbox_dedicated(eshop);
 //sandbox_montlimart(eshop);
-//sandbox_circle(eshop);
+sandbox_circle(eshop);
 //sandbox_dedicated_women(eshop);
 //sandbox_circle_women(eshop);
-sandbox_all_brand(links_brands);
+//sandbox_all_brand(links_brands);
 
 //sandbox_dedicated(eshop);
 
