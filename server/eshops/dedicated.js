@@ -63,9 +63,13 @@ const parse = data => {
         category = link.replace('/en/kids/','');
         category = category.split('/')[0];
       }
+
+      const image=$(element)
+      .find('img')
+      .attr('data-src');
       
  
-      return {shopname, name, color, price, for_who, category, final_link};
+      return {shopname, name, color, price, for_who, category, final_link, image};
     })
     .get();
 };
