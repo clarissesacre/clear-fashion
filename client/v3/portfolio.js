@@ -115,11 +115,11 @@ const renderSearchProducts = products => {
   const template = products
     .map(product => {
       return `
-      <div class="product" id=${product._id}>
+      <div class="product" id=${product._id} style="text-align: center">
+        <img  src=${product.image} alt="Not avaible" width="200" height="220">
         <span>${product.shopname}</span>
         <a href="${product.link}" target="_blank">${product.name}</a>
         <span>${product.price}€</span>
-        <img  src=${product.image} alt="Not avaible" width="200" height="220">
         <button onclick="changeFavorite('${product._id}')">${textFavorite(product._id)}</button>
       </div>
     `;
