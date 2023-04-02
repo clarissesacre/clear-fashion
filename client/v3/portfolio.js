@@ -119,8 +119,10 @@ const renderSearchProducts = products => {
         <img  src=${product.image} alt="Not avaible" width="200" height="220">
         <span>${product.shopname}</span>
         <a href="${product.link}" target="_blank">${product.name}</a>
+        <br>
         <span>${product.price}€</span>
         <button onclick="changeFavorite('${product._id}')">${textFavorite(product._id)}</button>
+        <br>
       </div>
     `;
     })
