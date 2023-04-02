@@ -86,6 +86,7 @@ const fetchBrands = async () => {
   }
 };
 
+/*
 const fetchSortProducts = async (sort=-1) => {
   try {
     const response = await fetch(
@@ -97,7 +98,7 @@ const fetchSortProducts = async (sort=-1) => {
     console.error(error);
     return currentProducts;
   }
-};
+};*/
 
 const fetchSex = async () => {
   try {
