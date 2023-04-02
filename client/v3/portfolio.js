@@ -8,7 +8,7 @@ let show = 12;
 let page = 1;
 let brand = 'All';
 let price = 'All';
-let sex = 'All';
+let for_who = 'All';
 let sort = 'Cheapest';
 let favorite_products = [];
 const current_date = Date.now();
@@ -37,7 +37,7 @@ const sectionFavoriteProducts = document.querySelector('#favoriteProducts');
 // affiche les produits avec possibilité de filtrage 
 const fetchProducts = async (show=12, page=1, brand="",price="", for_who="") => {
   try {
-    let url = `http://localhost:8092/products/price?page=${page}&limit=${show}&brand=${brand}&price=${price}&for_who=${for_who}`;// &sex=${sex}
+    let url = `http://localhost:8092/products/price?page=${page}&limit=${show}&brand=${brand}&price=${price}&for_who=${for_who}`;
     console.log(url);
     const response = await fetch(url);
     const body = await response.json();
