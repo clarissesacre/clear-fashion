@@ -10,7 +10,7 @@ let brand = 'All';
 let price = 'All';
 let for_who = 'All';
 let sort = 'Cheapest';
-let category = 'All';
+//let category = 'All';
 let favorite_products = [];
 const current_date = Date.now();
 
@@ -21,7 +21,7 @@ const selectBrand = document.querySelector('#brand-select');
 const selectPrice = document.querySelector('#price-select');
 const selectSort = document.querySelector('#sort-select');
 const selectSex = document.querySelector('#sex-select');
-const selectCategory = document.querySelector('#category-select');
+//const selectCategory = document.querySelector('#category-select');
 const spanNbProducts = document.querySelector('#nbProducts');
 const spanNbBrands = document.querySelector('#nbBrands');
 const spanPercentile50 = document.querySelector('#percentile50');
@@ -37,9 +37,9 @@ const sectionFavoriteProducts = document.querySelector('#favoriteProducts');
  */
 
 // affiche les produits avec possibilité de filtrage 
-const fetchProducts = async (show=12, page=1, brand="",price="", for_who="", category="") => {
+const fetchProducts = async (show=12, page=1, brand="",price="", for_who="") => {
   try {
-    let url = `http://localhost:8092/products/price?page=${page}&limit=${show}&brand=${brand}&price=${price}&for_who=${for_who}&category=${category}`;
+    let url = `http://localhost:8092/products/price?page=${page}&limit=${show}&brand=${brand}&price=${price}&for_who=${for_who}`;
     console.log(url);
     const response = await fetch(url);
     const body = await response.json();
@@ -101,6 +101,7 @@ const fetchSex = async () => {
   }
 };
 
+/*
 const fetchCategory = async () => {
   try {
     const response = await fetch(
@@ -112,7 +113,7 @@ const fetchCategory = async () => {
     console.error(error);
     return currentProducts;
   }
-};
+};*/
 
 ////////////////////////
 ////////////////////////
@@ -205,13 +206,13 @@ const renderFavoriteProducts = products => {
 selectShow.addEventListener('change', async (event) => {
   show = event.target.value;
   page = 1;
-  let products = await fetchProducts(show=show, page=1, brand="", price="",for_who="", category="")
+  let products = await fetchProducts(show=show, page=1, brand="", price="",for_who="")
   renderSearchProducts(products);
 });
 
 selectPage.addEventListener('change', async (event) => {
   page = event.target.value;
-  let products = await fetchProducts(show=12, page=page, brand="", price="",for_who="", category="")
+  let products = await fetchProducts(show=12, page=page, brand="", price="",for_who="")
   renderSearchProducts(products);
 });
 /*
@@ -232,7 +233,7 @@ selectSex.addEventListener('change', async (event) => {
     for_who="";
   }
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who, category=category)
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who)
   renderSearchProducts(products);
 });
 
@@ -245,7 +246,7 @@ selectPrice.addEventListener('change', async (event) => {
   // on remet direct la page à 1
   page = 1;
   // on appelle fetchproducts pour récupérer les produits avec les bon parametres
-  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who, category=category)
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who)
   // pour l'affichage
   renderSearchProducts(products);
 });
@@ -256,19 +257,19 @@ selectBrand.addEventListener('change', async (event) => {
     brand="";
   }
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who, category=category)
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who)
   renderSearchProducts(products);
 });
-
+/*
 selectCategory.addEventListener('change', async (event) => {
   category = event.target.value;
   if(category=='All'){
     category="";
   }
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who, category=category)
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who)
   renderSearchProducts(products);
-});
+});*/
 
 
 selectSort.addEventListener('change', async (event) => {
@@ -336,7 +337,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   selectSex.innerHTML = sexes;
 
 
-
+/*
   const category_names = await fetchCategory();
   
   category_names.unshift("All");
@@ -345,7 +346,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     value => `<option value="${value}">${value}</option>`
   ).join('');
 
-  selectCategory.innerHTML = categories;
+  selectCategory.innerHTML = categories;*/
 
 
 
