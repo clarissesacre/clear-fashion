@@ -182,7 +182,7 @@ selectBrand.addEventListener('change', async (event) => {
 selectSex.addEventListener('change', async (event) => {
   sex = event.target.value;
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price="",sex="")
+  let products = await fetchProducts(show=show, page=page, brand=brand, price="",sex=sex)
   renderSearchProducts(products);
 });
 
