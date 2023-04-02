@@ -126,7 +126,10 @@ app.get('/products/search', async (request, response) => {
     const result = await collection.find(script).skip(skip).limit(limit).toArray();
 
     response.json({
-       result
+      currentPage: page,
+      totalPages: totalPages,
+      totalCount: count,
+      data: result
     });
   }
   catch{
