@@ -95,7 +95,7 @@ app.get('/products/search', async (request, response) => {
     var page = request.query.page;
     var limit = request.query.limit;
     var price = request.query.price;
-    var brand = request.query.brand;
+    var shopname = request.query.shopname;
 
     if(page == undefined){
       page = 1;
@@ -112,8 +112,8 @@ app.get('/products/search', async (request, response) => {
     }
     const skip = (page - 1) * limit;
 
-    if((brand!="")){
-      script.brand = brand;
+    if((shopname!="")){
+      script.shopname = shopname;
     }
 
     if(price!=""){
