@@ -55,7 +55,8 @@ const fetchProducts = async (page = 1, size = 12) => {
     // page = 1 et size = 12
     const response = await fetch(
       //`https://clear-fashion-api.vercel.app?page=${page}&size=${size}`
-      'http://localhost:8092/products'
+      //'http://localhost:8092/products'
+      'https://clear-fashion-beige.vercel.app/products'
     );
 
     // lit la réponse en tant que JSON
