@@ -33,7 +33,7 @@ const parse = data => {
             .find('.price') // on prend le prix
             .text()
         );
-        const shopname = 'montlimart';
+        const brand = 'montlimart';
 
         const final_link = $(element)
        .find('.text-reset')
@@ -50,7 +50,7 @@ const parse = data => {
       .attr('data-src');
        
 
-       return {shopname, name, color, price, for_who, category, final_link,image};
+       return {brand, name, color, price, for_who, category, final_link,image};
 
     })
     .get();
