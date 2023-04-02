@@ -7,7 +7,6 @@ let show = 12;
 let page = 1;
 let brand = 'All';
 let price = 'All';
-let sex = 'All';
 let sort = 'Cheapest';
 let favorite_products = [];
 const current_date = Date.now();
@@ -18,7 +17,6 @@ const selectPage = document.querySelector('#page-select');
 const selectBrand = document.querySelector('#brand-select');
 const selectPrice = document.querySelector('#price-select');
 const selectSort = document.querySelector('#sort-select');
-//const selectSex = document.querySelector('#sex-select');
 const spanNbProducts = document.querySelector('#nbProducts');
 const spanNbBrands = document.querySelector('#nbBrands');
 const spanPercentile50 = document.querySelector('#percentile50');
@@ -33,10 +31,10 @@ const sectionFavoriteProducts = document.querySelector('#favoriteProducts');
  * Fetch API
  */
 
-// affiche les produits avec possibilité de filtrage 
-const fetchProducts = async (show=12, page=1, brand="",price=""/*,sex=""*/) => {
+const fetchProducts = async (show=12, page=1, brand="",price="") => {
   try {
-    let url = `http://localhost:8092/products/search?page=${page}&limit=${show}&brand=${brand}&price=${price}`;// &sex=${sex}
+    //let url = `https://clear-fashion-api-jaoudet.vercel.app/products/search?page=${page}&limit=${show}&brand=${brand}&price=${price}`;
+    let url = `http://localhost:8092/products/search?page=${page}&limit=${show}&brand=${brand}&price=${price}`;
     console.log(url);
     const response = await fetch(url);
     const body = await response.json();
@@ -57,10 +55,10 @@ const fetchProducts = async (show=12, page=1, brand="",price=""/*,sex=""*/) => {
   }
 };
 
-// renvoie la liste de tous les produits
 const fetchAllProducts = async () => {
   try {
     const response = await fetch(
+      //'https://clear-fashion-api-jaoudet.vercel.app/products'
       `http://localhost:8092/products`
     );
     const body = await response.json();
@@ -71,10 +69,10 @@ const fetchAllProducts = async () => {
   }
 };
 
-// renvoie la liste de toutes les marques
 const fetchBrands = async () => {
   try {
     const response = await fetch(
+      ///'https://clear-fashion-api-jaoudet.vercel.app/brands'
       `http://localhost:8092/brands`
     );
     const body = await response.json();
@@ -84,11 +82,12 @@ const fetchBrands = async () => {
     return currentProducts;
   }
 };
-/*
-const fetchSex = async () => {
+
+const fetchSortProducts = async (sort=-1) => {
   try {
     const response = await fetch(
-      `http://localhost:8092/sex`
+      ///`https://clear-fashion-api-jaoudet.vercel.app/sort?sort=${sort}`
+      `http://localhost:8092/sort?sort=${sort}`
     );
     const body = await response.json();
     return body;
@@ -96,10 +95,7 @@ const fetchSex = async () => {
     console.error(error);
     return currentProducts;
   }
-};*/
-
-////////////////////////
-////////////////////////
+};
 
 /**
  * Favorite products
@@ -130,23 +126,18 @@ function textFavorite(id) {
 /**
  * Render list of products
  */
-// traduit les produits en html
+
 const renderSearchProducts = products => {
   currentProducts = products;
   const template = products
     .map(product => {
       return `
-      <div class="product" id=${product._id} style="text-align: center">
-        <img  src=${product.image} alt="Not avaible" width="500" height="550">
-        <br>
-        <span>brand:${product.shopname}</span>
-        <br>
-        <a href="${product.final_link}" target="_blank">${product.name}</a>
-        <br>
+      <div class="product" id=${product._id}>
+        <span>${product.brand}</span>
+        <a href="${product.link}" target="_blank">${product.name}</a>
         <span>${product.price}€</span>
-        <br>
+        <span>${product.caracteristique}</span>
         <button onclick="changeFavorite('${product._id}')">${textFavorite(product._id)}</button>
-        <br>
       </div>
     `;
     })
@@ -159,17 +150,12 @@ const renderFavoriteProducts = products => {
   const template = favorite_products
     .map(product => {
       return `
-      <div class="product" id=${product._id} style="text-align: center">
-        <img  src=${product.image} alt="Not avaible" width="500" height="550">
-        <br>
-        <span>brand:${product.shopname}</span>
-        <br>
-        <a href="${product.final_link}" target="_blank">${product.name}</a>
-        <br>
+      <div class="product" id=${product._id}>
+        <span>${product.brand}</span>
+        <a href="${product.link}" target="_blank">${product.name}</a>
         <span>${product.price}€</span>
-        <br>
+        <span>${product.caracteristique}</span>
         <button onclick="changeFavorite('${product._id}')">${textFavorite(product._id)}</button>
-        <br>
       </div>
     `;
     })
@@ -179,9 +165,6 @@ const renderFavoriteProducts = products => {
   sectionFavoriteProducts.innerHTML = template;
 };
 
-
-
-
 /**
  * Declaration of all Listeners
  */
@@ -189,13 +172,13 @@ const renderFavoriteProducts = products => {
 selectShow.addEventListener('change', async (event) => {
   show = event.target.value;
   page = 1;
-  let products = await fetchProducts(show=show, page=1, brand="", price=""/*,sex=""*/)
+  let products = await fetchProducts(show=show, page=1, brand="", price="")
   renderSearchProducts(products);
 });
 
 selectPage.addEventListener('change', async (event) => {
   page = event.target.value;
-  let products = await fetchProducts(show=12, page=page, brand="", price=""/*,sex=""*/)
+  let products = await fetchProducts(show=12, page=page, brand="", price="")
   renderSearchProducts(products);
 });
 
@@ -205,18 +188,9 @@ selectBrand.addEventListener('change', async (event) => {
     brand="";
   }
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price=""/*,sex=""*/)
+  let products = await fetchProducts(show=show, page=page, brand=brand, price="")
   renderSearchProducts(products);
 });
-
-/*
-selectSex.addEventListener('change', async (event) => {
-  sex = event.target.value;
-  page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price="",sex=sex)
-  renderSearchProducts(products);
-});*/
-
 
 selectPrice.addEventListener('change', async (event) => {
   price = event.target.value;
@@ -224,7 +198,7 @@ selectPrice.addEventListener('change', async (event) => {
     price="";
   }
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand="", price=price/*,sex=""*/)
+  let products = await fetchProducts(show=show, page=page, brand="", price=price)
   renderSearchProducts(products);
 });
 
@@ -232,25 +206,27 @@ selectSort.addEventListener('change', async (event) => {
   sort = event.target.value;
   page = 1;
   let products = await fetchSortProducts();
+
   let listeOfPdts=[];
+
   if(sort!='Default'){
+
     if(sort=='Cheapest'){
       listeOfPdts = await fetchSortProducts(1);
     }
     else if(sort=='Most expensive'){
       listeOfPdts = await fetchSortProducts(-1);
     }
+
   }
   else{
     listeOfPdts = products
   }
+  
   products=listeOfPdts;
+
   renderSearchProducts(products);
 });
-
-
-
-
 
 /**
  * Launched on page load
@@ -279,21 +255,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   ).join('');
   
   selectBrand.innerHTML = brands;
-
-
-/*
-  const sex_names = await fetchSex();
   
-  sex_names.unshift("All");
-  const sexes = Array.from(
-    sex_names,
-    value => `<option value="${value}">${value}</option>`
-  ).join('');
-
-  selectSex.innerHTML = sexes;*/
-
-
-
   let products = await fetchProducts();
   renderSearchProducts(products);
 
