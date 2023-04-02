@@ -8,7 +8,7 @@ let page = 1;
 let brand = 'All';
 let price = 'All';
 let sex = 'All';
-let sort = 'Cheapest to most expensive';
+let sort = 'Cheapest';
 let favorite_products = [];
 const current_date = Date.now();
 
@@ -33,6 +33,7 @@ const sectionFavoriteProducts = document.querySelector('#favoriteProducts');
  * Fetch API
  */
 
+// affiche les produits avec possibilité de filtrage 
 const fetchProducts = async (show=12, page=1, brand="",price=""/*,sex=""*/) => {
   try {
     let url = `http://localhost:8092/products/search?page=${page}&limit=${show}&brand=${brand}&price=${price}`;// &sex=${sex}
@@ -56,6 +57,7 @@ const fetchProducts = async (show=12, page=1, brand="",price=""/*,sex=""*/) => {
   }
 };
 
+// renvoie la liste de tous les produits
 const fetchAllProducts = async () => {
   try {
     const response = await fetch(
@@ -69,6 +71,7 @@ const fetchAllProducts = async () => {
   }
 };
 
+// renvoie la liste de toutes les marques
 const fetchBrands = async () => {
   try {
     const response = await fetch(
@@ -94,6 +97,9 @@ const fetchSex = async () => {
     return currentProducts;
   }
 };*/
+
+////////////////////////
+////////////////////////
 
 /**
  * Favorite products
@@ -124,7 +130,7 @@ function textFavorite(id) {
 /**
  * Render list of products
  */
-
+// traduit les produits en html
 const renderSearchProducts = products => {
   currentProducts = products;
   const template = products
@@ -173,6 +179,9 @@ const renderFavoriteProducts = products => {
   sectionFavoriteProducts.innerHTML = template;
 };
 
+
+
+
 /**
  * Declaration of all Listeners
  */
@@ -192,6 +201,9 @@ selectPage.addEventListener('change', async (event) => {
 
 selectBrand.addEventListener('change', async (event) => {
   brand = event.target.value;
+  if(brand=='All'){
+    brand="";
+  }
   page = 1;
   let products = await fetchProducts(show=show, page=page, brand=brand, price=""/*,sex=""*/)
   renderSearchProducts(products);
@@ -208,6 +220,9 @@ selectSex.addEventListener('change', async (event) => {
 
 selectPrice.addEventListener('change', async (event) => {
   price = event.target.value;
+  if(price=='All'){
+    price="";
+  }
   page = 1;
   let products = await fetchProducts(show=show, page=page, brand="", price=price/*,sex=""*/)
   renderSearchProducts(products);
@@ -216,9 +231,26 @@ selectPrice.addEventListener('change', async (event) => {
 selectSort.addEventListener('change', async (event) => {
   sort = event.target.value;
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,sex="")
+  let products = await fetchSortProducts();
+  let listeOfPdts=[];
+  if(sort!='Default'){
+    if(sort=='Cheapest'){
+      listeOfPdts = await fetchSortProducts(1);
+    }
+    else if(sort=='Most expensive'){
+      listeOfPdts = await fetchSortProducts(-1);
+    }
+  }
+  else{
+    listeOfPdts = products
+  }
+  products=listeOfPdts;
   renderSearchProducts(products);
 });
+
+
+
+
 
 /**
  * Launched on page load
