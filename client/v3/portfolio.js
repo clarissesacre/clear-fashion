@@ -37,7 +37,8 @@ const sectionFavoriteProducts = document.querySelector('#favoriteProducts');
 // affiche les produits avec possibilité de filtrage 
 const fetchProducts = async (show=12, page=1, brand="",price="", for_who="") => {
   try {
-    let url = `http://localhost:8092/products/price?page=${page}&limit=${show}&brand=${brand}&price=${price}&for_who=${for_who}`;
+    let url = `https://clear-fashion-alpha-snowy.vercel.app/products/price?page=${page}&limit=${show}&brand=${brand}&price=${price}&for_who=${for_who}`;
+    //let url = `http://localhost:8092/products/price?page=${page}&limit=${show}&brand=${brand}&price=${price}&for_who=${for_who}`;
     console.log(url);
     const response = await fetch(url);
     const body = await response.json();
@@ -62,7 +63,8 @@ const fetchProducts = async (show=12, page=1, brand="",price="", for_who="") => 
 const fetchAllProducts = async () => {
   try {
     const response = await fetch(
-      `http://localhost:8092/products`
+      //`http://localhost:8092/products`
+      'https://clear-fashion-alpha-snowy.vercel.app/products'
     );
     const body = await response.json();
     return body;
@@ -76,7 +78,8 @@ const fetchAllProducts = async () => {
 const fetchBrands = async () => {
   try {
     const response = await fetch(
-      `http://localhost:8092/brands`
+      //`http://localhost:8092/brands`
+      'https://clear-fashion-alpha-snowy.vercel.app/brands'
     );
     const body = await response.json();
     return body;
@@ -103,7 +106,8 @@ const fetchSortProducts = async (sort=-1) => {
 const fetchSex = async () => {
   try {
     const response = await fetch(
-      `http://localhost:8092/sex`
+      //`http://localhost:8092/sex`
+      'https://clear-fashion-alpha-snowy.vercel.app/sex'
     );
     const body = await response.json();
     return body;
