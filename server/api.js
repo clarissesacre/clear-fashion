@@ -95,6 +95,7 @@ app.get('/products/search', async (request, response) => {
     var limit = request.query.limit;
     var price = request.query.price;
     var brand = request.query.shopname;
+    var sexe = request.query.for_who;
 
     if(page == undefined){
       page = 1;
@@ -117,6 +118,10 @@ app.get('/products/search', async (request, response) => {
 
     if(price!=""){
       script.price = {$lte: parseFloat(price)};
+    }
+
+    if((sexe!="")){
+      script.sexe = sexe;
     }
 
     const count = await collection.countDocuments(script);
