@@ -131,6 +131,27 @@ app.get('/products/id', async (request, response) => {
   }
 });
 
+app.get('/sort', async (request, response) => {
+  const client = getClient();
+  const collection = client.db("ClusterClearFashion").collection("all_brands");
+  var sortVal = request.query.sort;
+
+  const sortType ={};
+  if(sortVal==1){
+    sortType.price = 1;
+  }
+  else if(sortVal==-1){
+    sortType.price = -1;
+  }
+  else{
+    sortType.price = 0;
+  }
+
+  const result = await collection.find({}).sort(sortType).toArray();
+
+  response.json(result);
+});
+
 app.listen(PORT);
 
 console.log(`📡 Running on port ${PORT}`);
