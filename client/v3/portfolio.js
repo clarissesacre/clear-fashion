@@ -7,6 +7,7 @@ let show = 12;
 let page = 1;
 let brand = 'All';
 let price = 'All';
+let sex = 'All';
 let sort = 'Cheapest to most expensive';
 let favorite_products = [];
 const current_date = Date.now();
@@ -152,12 +153,17 @@ const renderFavoriteProducts = products => {
   const template = favorite_products
     .map(product => {
       return `
-      <div class="product" id=${product._id}>
-        <span>${product.brand}</span>
-        <a href="${product.link}" target="_blank">${product.name}</a>
+      <div class="product" id=${product._id} style="text-align: center">
+        <img  src=${product.image} alt="Not avaible" width="500" height="550">
+        <br>
+        <span>brand:${product.shopname}</span>
+        <br>
+        <a href="${product.final_link}" target="_blank">${product.name}</a>
+        <br>
         <span>${product.price}€</span>
-        <span>${product.caracteristique}</span>
+        <br>
         <button onclick="changeFavorite('${product._id}')">${textFavorite(product._id)}</button>
+        <br>
       </div>
     `;
     })
@@ -241,9 +247,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   ).join('');
   
   selectBrand.innerHTML = brands;
+
+
 /*
   const sex_names = await fetchSex();
-  //spanNbBrands.innerHTML = brand_names.length;
   
   sex_names.unshift("All");
   const sexes = Array.from(
