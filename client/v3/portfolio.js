@@ -206,7 +206,7 @@ selectBrand.addEventListener('change', async (event) => {
     brand="";
   }
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price="",for_who="")
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who)
   renderSearchProducts(products);
 });
 
