@@ -46,7 +46,6 @@ app.get('/sex', async (request, response) => {
     const client = getClient();
     const collection = client.db("ClusterClearFashion").collection("all_brands");
     const found = await collection.distinct('for_who');
-    //response.send({brands: found});
     response.json(found);
   }
   catch{
@@ -95,7 +94,7 @@ app.get('/products/search', async (request, response) => {
     var page = request.query.page;
     var limit = request.query.limit;
     var price = request.query.price;
-    var brand = request.query.brand;
+    var brand = request.query.shopname;
 
     if(page == undefined){
       page = 1;
