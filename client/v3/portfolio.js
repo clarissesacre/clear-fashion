@@ -80,7 +80,7 @@ const fetchBrands = async () => {
     return currentProducts;
   }
 };
-
+/*
 const fetchSex = async () => {
   try {
     const response = await fetch(
@@ -92,7 +92,7 @@ const fetchSex = async () => {
     console.error(error);
     return currentProducts;
   }
-};
+};*/
 
 /**
  * Favorite products
@@ -191,13 +191,13 @@ selectBrand.addEventListener('change', async (event) => {
   renderSearchProducts(products);
 });
 
-
+/*
 selectSex.addEventListener('change', async (event) => {
   sex = event.target.value;
   page = 1;
   let products = await fetchProducts(show=show, page=page, brand=brand, price="",sex=sex)
   renderSearchProducts(products);
-});
+});*/
 
 
 selectPrice.addEventListener('change', async (event) => {
@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   ).join('');
   
   selectBrand.innerHTML = brands;
-
+/*
   const sex_names = await fetchSex();
   //spanNbBrands.innerHTML = brand_names.length;
   
@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     value => `<option value="${value}">${value}</option>`
   ).join('');
 
-  selectSex.innerHTML = sexes;
+  selectSex.innerHTML = sexes;*/
 
 
 
