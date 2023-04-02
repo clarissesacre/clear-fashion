@@ -191,7 +191,7 @@ app.get('/products/price', async (request, response) => {
     var price = request.query.price;
     var brand = request.query.brand;
     var for_who = request.query.for_who;
-    var category = request.query.for_who;
+    
 
     if(page == undefined){
       page = 1;
@@ -222,9 +222,7 @@ app.get('/products/price', async (request, response) => {
       script.for_who = for_who;
     }
       
-    if((category!="")){
-      script.category = category;
-    }
+
     
     const count = await collection.countDocuments(script);
     const totalPages = Math.ceil(count / limit);
