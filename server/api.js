@@ -85,7 +85,7 @@ app.get('/sort', async (request, response) => {
   response.json(result);
 });*/
 
-/*
+
 app.get('/products/search', async (request, response) => {
   try{
     const client = getClient();
@@ -135,7 +135,7 @@ app.get('/products/search', async (request, response) => {
   catch{
     response.send({error : "Couldn't fetch searchs"}); 
   }
-});*/
+});
 
 app.get('/products/price', async (request, response) => {
   try{
@@ -165,6 +165,7 @@ app.get('/products/price', async (request, response) => {
   }
 });
 
+/*
 app.get('/products/search', async (request, response) => {
   try{
     const client = getClient();
@@ -213,6 +214,7 @@ app.get('/products/search', async (request, response) => {
     response.send({error : "Couldn't fetch searchs"}); 
   }
 });
+*/
 
 
 app.get('/products/id', async (request, response) => {
