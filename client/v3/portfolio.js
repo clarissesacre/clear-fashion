@@ -17,7 +17,7 @@ const selectPage = document.querySelector('#page-select');
 const selectBrand = document.querySelector('#brand-select');
 const selectPrice = document.querySelector('#price-select');
 const selectSort = document.querySelector('#sort-select');
-const selectSex = document.querySelector('#sex-select');
+//const selectSex = document.querySelector('#sex-select');
 const spanNbProducts = document.querySelector('#nbProducts');
 const spanNbBrands = document.querySelector('#nbBrands');
 const spanPercentile50 = document.querySelector('#percentile50');
@@ -32,9 +32,9 @@ const sectionFavoriteProducts = document.querySelector('#favoriteProducts');
  * Fetch API
  */
 
-const fetchProducts = async (show=12, page=1, brand="",price="",sex="") => {
+const fetchProducts = async (show=12, page=1, brand="",price=""/*,sex=""*/) => {
   try {
-    let url = `http://localhost:8092/products/search?page=${page}&limit=${show}&brand=${brand}&price=${price}&sex=${sex}`;
+    let url = `http://localhost:8092/products/search?page=${page}&limit=${show}&brand=${brand}&price=${price}`;// &sex=${sex}
     console.log(url);
     const response = await fetch(url);
     const body = await response.json();
@@ -174,20 +174,20 @@ const renderFavoriteProducts = products => {
 selectShow.addEventListener('change', async (event) => {
   show = event.target.value;
   page = 1;
-  let products = await fetchProducts(show=show, page=1, brand="", price="",sex="")
+  let products = await fetchProducts(show=show, page=1, brand="", price=""/*,sex=""*/)
   renderSearchProducts(products);
 });
 
 selectPage.addEventListener('change', async (event) => {
   page = event.target.value;
-  let products = await fetchProducts(show=12, page=page, brand="", price="",sex="")
+  let products = await fetchProducts(show=12, page=page, brand="", price=""/*,sex=""*/)
   renderSearchProducts(products);
 });
 
 selectBrand.addEventListener('change', async (event) => {
   brand = event.target.value;
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price="",sex="")
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=""/*,sex=""*/)
   renderSearchProducts(products);
 });
 
@@ -203,7 +203,7 @@ selectSex.addEventListener('change', async (event) => {
 selectPrice.addEventListener('change', async (event) => {
   price = event.target.value;
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand="", price=price,sex="")
+  let products = await fetchProducts(show=show, page=page, brand="", price=price/*,sex=""*/)
   renderSearchProducts(products);
 });
 
