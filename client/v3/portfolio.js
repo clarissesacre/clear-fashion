@@ -205,13 +205,13 @@ const renderFavoriteProducts = products => {
 selectShow.addEventListener('change', async (event) => {
   show = event.target.value;
   page = 1;
-  let products = await fetchProducts(show=show, page=1, brand="", price="",for_who="")
+  let products = await fetchProducts(show=show, page=1, brand="", price="",for_who="", category="")
   renderSearchProducts(products);
 });
 
 selectPage.addEventListener('change', async (event) => {
   page = event.target.value;
-  let products = await fetchProducts(show=12, page=page, brand="", price="",for_who="")
+  let products = await fetchProducts(show=12, page=page, brand="", price="",for_who="", category="")
   renderSearchProducts(products);
 });
 /*
