@@ -40,7 +40,7 @@ const parse = data => {
         .find('.color-variant')
         .attr('data-color');
 
-        const shopname = 'circle';
+        const brand = 'circle';
 
         var link = $(element)
         .find('.full-unstyled-link')
@@ -73,7 +73,7 @@ const parse = data => {
       
       
 
-      return {shopname, name, color, price, for_who, category, final_link, image};
+      return {brand, name, color, price, for_who, category, final_link, image};
     })
     .get();
 };
