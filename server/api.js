@@ -31,8 +31,8 @@ app.get('/', (request, response) => {
 app.get('/brands', async (request, response) => {
   try{
     const client = getClient();
-    const collection = client.db("ClusterClearFashion").collection("GENERAL");
-    const found = await collection.distinct('brand');
+    const collection = client.db("ClusterClearFashion").collection("all_brands");
+    const found = await collection.distinct('shopname');
     //response.send({brands: found});
     response.json(found);
   }
@@ -43,7 +43,7 @@ app.get('/brands', async (request, response) => {
 
 app.get('/products', async (request, response) => {
   const client = getClient();
-  const collection = client.db("ClusterClearFashion").collection("GENERAL");
+  const collection = client.db("ClusterClearFashion").collection("all_brands");
 
   const result = await collection.find({}).toArray();
 
@@ -53,7 +53,7 @@ app.get('/products', async (request, response) => {
 app.get('/products/search', async (request, response) => {
   try{
     const client = getClient();
-    const collection = client.db("ClusterClearFashion").collection("GENERAL");
+    const collection = client.db("ClusterClearFashion").collection("all_brands");
 
     var script ={};
     var page = request.query.page;
@@ -106,7 +106,7 @@ app.get('/products/id', async (request, response) => {
     const productId = request.params.id;
     const script = {_id: ObjectId(productId)};
     const client = getClient();
-    const collection = client.db("ClusterClearFashion").collection("GENERAL");
+    const collection = client.db("ClusterClearFashion").collection("all_brands");
     const found = await collection.find(script).toArray();
     
     response.send({ids: found});
