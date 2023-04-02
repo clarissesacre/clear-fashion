@@ -140,7 +140,7 @@ const renderSearchProducts = products => {
       <div class="product" id=${product._id} style="text-align: center">
         <img  src=${product.image} alt="Not avaible" width="500" height="550">
         <br>
-        <span>brand:${product.shopname}</span>
+        <span>brand:${product.brand}</span>
         <br>
         <a href="${product.final_link}" target="_blank">${product.name}</a>
         <br>
@@ -163,7 +163,7 @@ const renderFavoriteProducts = products => {
       <div class="product" id=${product._id} style="text-align: center">
         <img  src=${product.image} alt="Not avaible" width="500" height="550">
         <br>
-        <span>brand:${product.shopname}</span>
+        <span>brand:${product.brand}</span>
         <br>
         <a href="${product.final_link}" target="_blank">${product.name}</a>
         <br>
