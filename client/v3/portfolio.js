@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   selectBrand.innerHTML = brands;
 
-  const sex_names = await fetchBrands();
+  const sex_names = await fetchSex();
   //spanNbBrands.innerHTML = brand_names.length;
   
   sex_names.unshift("All");
