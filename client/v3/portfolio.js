@@ -182,6 +182,7 @@ const renderFavoriteProducts = products => {
 
 
 
+
 /**
  * Declaration of all Listeners
  */
@@ -217,6 +218,7 @@ selectSex.addEventListener('change', async (event) => {
   renderSearchProducts(products);
 });*/
 
+
 selectPrice.addEventListener('change', async (event) => {
   price = event.target.value;
   if(price=='All'){
@@ -250,6 +252,7 @@ selectSort.addEventListener('change', async (event) => {
 
 
 
+
 /**
  * Launched on page load
  */
@@ -278,6 +281,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   selectBrand.innerHTML = brands;
 
+
 /*
   const sex_names = await fetchSex();
   
@@ -288,6 +292,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   ).join('');
 
   selectSex.innerHTML = sexes;*/
+
 
 
   let products = await fetchProducts();
@@ -306,5 +311,3 @@ document.addEventListener('DOMContentLoaded', async () => {
   spanPercentile90.innerHTML = Math.round(quantile(prices, 0.90));
   spanPercentile95.innerHTML = Math.round(quantile(prices, 0.95));
 });
-
-
