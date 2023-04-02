@@ -214,7 +214,7 @@ selectPage.addEventListener('change', async (event) => {
   let products = await fetchProducts(show=12, page=page, brand="", price="",for_who="")
   renderSearchProducts(products);
 });
-
+/*
 selectBrand.addEventListener('change', async (event) => {
   brand = event.target.value;
   if(brand=='All'){
@@ -223,7 +223,7 @@ selectBrand.addEventListener('change', async (event) => {
   page = 1;
   let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who, category=category)
   renderSearchProducts(products);
-});
+});*/
 
 
 selectSex.addEventListener('change', async (event) => {
