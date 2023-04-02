@@ -116,7 +116,7 @@ const renderSearchProducts = products => {
     .map(product => {
       return `
       <div class="product" id=${product._id} style="text-align: center">
-        <img  src=${product.image} alt="Not avaible" width="2000" height="2200">
+        <img  src=${product.image} alt="Not avaible" width="500" height="550">
         <br>
         <span>brand:${product.shopname}</span>
         <br>
