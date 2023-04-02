@@ -223,7 +223,7 @@ app.get('/products/price', async (request, response) => {
     }
       
     if((category!="")){
-      script.for_who = category;
+      script.category = category;
     }
     
     const count = await collection.countDocuments(script);
