@@ -45,7 +45,7 @@ app.get('/sex', async (request, response) => {
   try{
     const client = getClient();
     const collection = client.db("ClusterClearFashion").collection("all_brands");
-    const found = await collection.distinct('sex');
+    const found = await collection.distinct('for_who');
     //response.send({brands: found});
     response.json(found);
   }
