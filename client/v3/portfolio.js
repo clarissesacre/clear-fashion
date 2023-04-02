@@ -10,7 +10,6 @@ let brand = 'All';
 let price = 'All';
 let for_who = 'All';
 let sort = 'Cheapest';
-//let category = 'All';
 let favorite_products = [];
 const current_date = Date.now();
 
@@ -21,7 +20,6 @@ const selectBrand = document.querySelector('#brand-select');
 const selectPrice = document.querySelector('#price-select');
 const selectSort = document.querySelector('#sort-select');
 const selectSex = document.querySelector('#sex-select');
-//const selectCategory = document.querySelector('#category-select');
 const spanNbProducts = document.querySelector('#nbProducts');
 const spanNbBrands = document.querySelector('#nbBrands');
 const spanPercentile50 = document.querySelector('#percentile50');
@@ -215,7 +213,7 @@ selectPage.addEventListener('change', async (event) => {
   let products = await fetchProducts(show=12, page=page, brand="", price="",for_who="")
   renderSearchProducts(products);
 });
-/*
+
 selectBrand.addEventListener('change', async (event) => {
   brand = event.target.value;
   if(brand=='All'){
@@ -224,7 +222,7 @@ selectBrand.addEventListener('change', async (event) => {
   page = 1;
   let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who, category=category)
   renderSearchProducts(products);
-});*/
+});
 
 
 selectSex.addEventListener('change', async (event) => {
