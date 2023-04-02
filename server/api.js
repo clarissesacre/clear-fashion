@@ -32,7 +32,7 @@ app.get('/brands', async (request, response) => {
   try{
     const client = getClient();
     const collection = client.db("ClusterClearFashion").collection("all_brands");
-    const found = await collection.distinct('shopname');
+    const found = await collection.distinct('brand');
     //response.send({brands: found});
     response.json(found);
   }
@@ -94,7 +94,7 @@ app.get('/products/search', async (request, response) => {
     var page = request.query.page;
     var limit = request.query.limit;
     var price = request.query.price;
-    var brand = request.query.shopname;
+    var brand = request.query.brand;
     var sexe = request.query.for_who;
 
     if(page == undefined){
@@ -147,15 +147,15 @@ app.get('/products/price', async (request, response) => {
     const collection = client.db("ClusterClearFashion").collection("all_brands");
     var script ={};
     var price = request.query.price;
-    var shopname = request.query.shopname;
+    var brand = request.query.brand;
 
     // affiche tout si aucun prix max rentré
     if(price!=""){
       script.price = {$lte: parseFloat(price)};
     }
     // affiche toutes les marques si aucune rentrée
-    if((shopname!="")){
-      script.shopname = shopname;
+    if((brand!="")){
+      script.brand = brand;
     }
       
     const result = await collection.find(script).toArray();
@@ -179,7 +179,7 @@ app.get('/products/search', async (request, response) => {
     var page = request.query.page;
     var limit = request.query.limit;
     var price = request.query.price;
-    var shopname = request.query.shopname;
+    var brand = request.query.brand;
 
     if(page == undefined){
       page = 1;
@@ -201,8 +201,8 @@ app.get('/products/search', async (request, response) => {
       script.price = {$lte: parseFloat(price)};
     }
     // affiche toutes les marques si aucune rentrée
-    if((shopname!="")){
-      script.shopname = shopname;
+    if((brand!="")){
+      script.brand = brand;
     }
 
     const count = await collection.countDocuments(script);
@@ -284,7 +284,7 @@ app.get('/', (request, response) => {
 app.get('/brands', async (request, response) => {
   const client = getClient();
   const collection = client.db("ClusterClearFashion").collection("all_brands");
-  const found = await collection.distinct('shopname');
+  const found = await collection.distinct('brand');
   response.json(found);
 });
 
@@ -303,15 +303,15 @@ app.get('/products/price', async (request, response) => {
     const collection = client.db("ClusterClearFashion").collection("all_brands");
     var script ={};
     var price = request.query.price;
-    var shopname = request.query.shopname;
+    var brand = request.query.brand;
 
     // affiche tout si aucun prix max rentré
     if(price!=""){
       script.price = {$lte: parseFloat(price)};
     }
     // affiche toutes les marques si aucune rentrée
-    if((shopname!="")){
-      script.shopname = shopname;
+    if((brand!="")){
+      script.brand = brand;
     }
       
     const result = await collection.find(script).toArray();
