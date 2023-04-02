@@ -44,9 +44,13 @@ const parse = data => {
        var category='';
        category = final_link.replace('https://www.montlimart.com/','');
        category = category.split('/')[0];
+
+       const image=$(element)
+      .find('img')
+      .attr('data-src');
        
 
-       return {shopname, name, color, price, for_who, category, final_link};
+       return {shopname, name, color, price, for_who, category, final_link,image};
 
     })
     .get();
