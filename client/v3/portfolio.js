@@ -218,16 +218,31 @@ selectSex.addEventListener('change', async (event) => {
   renderSearchProducts(products);
 });*/
 
-
+// quand on modifie le prix selectionné
+// 
 selectPrice.addEventListener('change', async (event) => {
   price = event.target.value;
   if(price=='All'){
     price="";
   }
+  // on remet direct la page à 1
   page = 1;
+  // on appelle fetchproducts pour récupérer les produits avec les bon parametres
   let products = await fetchProducts(show=show, page=page, brand="", price=price/*,sex=""*/)
+  // pour l'affichage
   renderSearchProducts(products);
 });
+
+selectBrand.addEventListener('change', async (event) => {
+  brand = event.target.value;
+  if(brand=='All'){
+    brand="";
+  }
+  page = 1;
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=""/*,sex=""*/)
+  renderSearchProducts(products);
+});
+
 
 selectSort.addEventListener('change', async (event) => {
   sort = event.target.value;
