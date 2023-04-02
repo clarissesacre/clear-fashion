@@ -86,6 +86,19 @@ const fetchBrands = async () => {
   }
 };
 
+const fetchSortProducts = async (sort=-1) => {
+  try {
+    const response = await fetch(
+      `http://localhost:8092/sorted`
+    );
+    const body = await response.json();
+    return body;
+  } catch (error) {
+    console.error(error);
+    return currentProducts;
+  }
+};
+
 const fetchSex = async () => {
   try {
     const response = await fetch(
