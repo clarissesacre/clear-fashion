@@ -117,10 +117,13 @@ const renderSearchProducts = products => {
       return `
       <div class="product" id=${product._id} style="text-align: center">
         <img  src=${product.image} alt="Not avaible" width="200" height="220">
+        <br>
         <span>${product.shopname}</span>
+        <br>
         <a href="${product.link}" target="_blank">${product.name}</a>
         <br>
         <span>${product.price}€</span>
+        <br>
         <button onclick="changeFavorite('${product._id}')">${textFavorite(product._id)}</button>
         <br>
       </div>
