@@ -178,6 +178,7 @@ app.get('/products/price', async (request, response) => {
     var limit = request.query.limit;
     var price = request.query.price;
     var brand = request.query.brand;
+    var for_who = request.query.for_who;
 
     if(page == undefined){
       page = 1;
@@ -203,8 +204,12 @@ app.get('/products/price', async (request, response) => {
     if((brand!="")){
       script.brand = brand;
     }
+
+    if((for_who!="")){
+      script.for_who = for_who;
+    }
       
-    //const result = await collection.find(script).toArray();
+    
     const count = await collection.countDocuments(script);
     const totalPages = Math.ceil(count / limit);
 
