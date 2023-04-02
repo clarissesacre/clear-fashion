@@ -53,6 +53,18 @@ app.get('/sex', async (request, response) => {
   }
 });
 
+app.get('/category', async (request, response) => {
+  try{
+    const client = getClient();
+    const collection = client.db("ClusterClearFashion").collection("all_brands");
+    const found = await collection.distinct('category');
+    response.json(found);
+  }
+  catch{
+    response.send({error : "Couldn't fetch brands"}); 
+  }
+});
+
 app.get('/products', async (request, response) => {
   const client = getClient();
   const collection = client.db("ClusterClearFashion").collection("all_brands");
