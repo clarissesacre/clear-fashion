@@ -47,9 +47,10 @@ const parse = data => {
         .attr('href');
         final_link = "https://shop.circlesportswear.com" +link;
         
-        var image = $(element)
-        .find('media media--transparent media--hover-effect')
-        .attr('srcsert');
+        var img = $(element)
+        .find('img')
+        .attr('src');
+        var image = 'https:'+img;
 
 
       var for_who= '';
