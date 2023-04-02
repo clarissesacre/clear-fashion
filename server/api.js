@@ -32,7 +32,7 @@ app.get('/brands', async (request, response) => {
   try{
     const client = getClient();
     const collection = client.db("ClusterClearFashion").collection("all_brands");
-    const found = await collection.distinct('brand');
+    const found = await collection.distinct('shopname');
     //response.send({brands: found});
     response.json(found);
   }
@@ -95,7 +95,7 @@ app.get('/products/search', async (request, response) => {
     var limit = request.query.limit;
     var price = request.query.price;
     var brand = request.query.brand;
-    var sexe = request.query.for_who;
+    
 
     if(page == undefined){
       page = 1;
@@ -120,10 +120,6 @@ app.get('/products/search', async (request, response) => {
       script.price = {$lte: parseFloat(price)};
     }
 
-    if((sexe!="")){
-      script.sexe = sexe;
-    }
-
     const count = await collection.countDocuments(script);
     const totalPages = Math.ceil(count / limit);
 
@@ -141,22 +137,21 @@ app.get('/products/search', async (request, response) => {
   }
 });
 
-
 app.get('/products/price', async (request, response) => {
   try{
     const client = getClient();
     const collection = client.db("ClusterClearFashion").collection("all_brands");
     var script ={};
     var price = request.query.price;
-    var brand = request.query.brand;
+    var shopname = request.query.shopname;
 
     // affiche tout si aucun prix max rentré
     if(price!=""){
       script.price = {$lte: parseFloat(price)};
     }
     // affiche toutes les marques si aucune rentrée
-    if((brand!="")){
-      script.brand = brand;
+    if((shopname!="")){
+      script.shopname = shopname;
     }
       
     const result = await collection.find(script).toArray();
@@ -169,6 +164,57 @@ app.get('/products/price', async (request, response) => {
     response.send({error : "Couldn't fetch searchs"}); 
   }
 });
+
+/*
+app.get('/products/search', async (request, response) => {
+  try{
+    const client = getClient();
+    const collection = client.db("ClusterClearFashion").collection("all_brands");
+
+    var script ={};
+    var page = request.query.page;
+    var limit = request.query.limit;
+    var price = request.query.price;
+    var shopname = request.query.shopname;
+
+    if(page == undefined){
+      page = 1;
+    }
+    else{
+      page = parseInt(page);
+    }
+
+    if(limit == undefined){
+      limit = 12;
+    }
+    else{
+      limit = parseInt(limit);
+    }
+    const skip = (page - 1) * limit;
+
+    // affiche tout si aucun prix max rentré
+    if(price!=""){
+      script.price = {$lte: parseFloat(price)};
+    }
+    // affiche toutes les marques si aucune rentrée
+    if((shopname!="")){
+      script.shopname = shopname;
+    }
+
+    const count = await collection.countDocuments(script);
+    const totalPages = Math.ceil(count / limit);
+
+    const result = await collection.find(script).skip(skip).limit(limit).toArray();
+
+    response.json({
+      result
+    });
+  }
+  catch{
+    response.send({error : "Couldn't fetch searchs"}); 
+  }
+});
+*/
 
 
 app.get('/products/id', async (request, response) => {
@@ -234,7 +280,7 @@ app.get('/', (request, response) => {
 app.get('/brands', async (request, response) => {
   const client = getClient();
   const collection = client.db("ClusterClearFashion").collection("all_brands");
-  const found = await collection.distinct('brand');
+  const found = await collection.distinct('shopname');
   response.json(found);
 });
 
@@ -253,15 +299,15 @@ app.get('/products/price', async (request, response) => {
     const collection = client.db("ClusterClearFashion").collection("all_brands");
     var script ={};
     var price = request.query.price;
-    var brand = request.query.brand;
+    var shopname = request.query.shopname;
 
     // affiche tout si aucun prix max rentré
     if(price!=""){
       script.price = {$lte: parseFloat(price)};
     }
     // affiche toutes les marques si aucune rentrée
-    if((brand!="")){
-      script.brand = brand;
+    if((shopname!="")){
+      script.shopname = shopname;
     }
       
     const result = await collection.find(script).toArray();
