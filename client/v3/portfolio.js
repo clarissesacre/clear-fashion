@@ -10,6 +10,7 @@ let brand = 'All';
 let price = 'All';
 let for_who = 'All';
 let sort = 'Cheapest';
+let category = 'All';
 let favorite_products = [];
 const current_date = Date.now();
 
@@ -20,6 +21,7 @@ const selectBrand = document.querySelector('#brand-select');
 const selectPrice = document.querySelector('#price-select');
 const selectSort = document.querySelector('#sort-select');
 const selectSex = document.querySelector('#sex-select');
+const selectCategory = document.querySelector('#category-select');
 const spanNbProducts = document.querySelector('#nbProducts');
 const spanNbBrands = document.querySelector('#nbBrands');
 const spanPercentile50 = document.querySelector('#percentile50');
@@ -35,9 +37,9 @@ const sectionFavoriteProducts = document.querySelector('#favoriteProducts');
  */
 
 // affiche les produits avec possibilité de filtrage 
-const fetchProducts = async (show=12, page=1, brand="",price="", for_who="") => {
+const fetchProducts = async (show=12, page=1, brand="",price="", for_who="", category="") => {
   try {
-    let url = `http://localhost:8092/products/price?page=${page}&limit=${show}&brand=${brand}&price=${price}&for_who=${for_who}`;
+    let url = `http://localhost:8092/products/price?page=${page}&limit=${show}&brand=${brand}&price=${price}&for_who=${for_who}&category=${category}`;
     console.log(url);
     const response = await fetch(url);
     const body = await response.json();
@@ -90,6 +92,19 @@ const fetchSex = async () => {
   try {
     const response = await fetch(
       `http://localhost:8092/sex`
+    );
+    const body = await response.json();
+    return body;
+  } catch (error) {
+    console.error(error);
+    return currentProducts;
+  }
+};
+
+const fetchCategory = async () => {
+  try {
+    const response = await fetch(
+      `http://localhost:8092/category`
     );
     const body = await response.json();
     return body;
@@ -206,7 +221,7 @@ selectBrand.addEventListener('change', async (event) => {
     brand="";
   }
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who)
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who, category=category)
   renderSearchProducts(products);
 });
 
@@ -217,7 +232,7 @@ selectSex.addEventListener('change', async (event) => {
     for_who="";
   }
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who)
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who, category=category)
   renderSearchProducts(products);
 });
 
@@ -230,7 +245,7 @@ selectPrice.addEventListener('change', async (event) => {
   // on remet direct la page à 1
   page = 1;
   // on appelle fetchproducts pour récupérer les produits avec les bon parametres
-  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who)
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who, category=category)
   // pour l'affichage
   renderSearchProducts(products);
 });
@@ -241,7 +256,17 @@ selectBrand.addEventListener('change', async (event) => {
     brand="";
   }
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who)
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who, category=category)
+  renderSearchProducts(products);
+});
+
+selectCategory.addEventListener('change', async (event) => {
+  category = event.target.value;
+  if(category=='All'){
+    category="";
+  }
+  page = 1;
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who, category=category)
   renderSearchProducts(products);
 });
 
@@ -309,6 +334,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   ).join('');
 
   selectSex.innerHTML = sexes;
+
+  const category_names = await fetchSex();
+  
+  sex_names.unshift("All");
+  const categories = Array.from(
+    category_names,
+    value => `<option value="${value}">${value}</option>`
+  ).join('');
+
+  selectSex.innerHTML = categories;
 
 
 
