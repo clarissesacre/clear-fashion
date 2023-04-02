@@ -17,6 +17,7 @@ const selectPage = document.querySelector('#page-select');
 const selectBrand = document.querySelector('#brand-select');
 const selectPrice = document.querySelector('#price-select');
 const selectSort = document.querySelector('#sort-select');
+const selectSex = document.querySelector('#sex-select');
 const spanNbProducts = document.querySelector('#nbProducts');
 const spanNbBrands = document.querySelector('#nbBrands');
 const spanPercentile50 = document.querySelector('#percentile50');
@@ -31,9 +32,9 @@ const sectionFavoriteProducts = document.querySelector('#favoriteProducts');
  * Fetch API
  */
 
-const fetchProducts = async (show=12, page=1, brand="",price="") => {
+const fetchProducts = async (show=12, page=1, brand="",price="",sex="") => {
   try {
-    let url = `http://localhost:8092/products/search?page=${page}&limit=${show}&brand=${brand}&price=${price}`;
+    let url = `http://localhost:8092/products/search?page=${page}&limit=${show}&brand=${brand}&price=${price}&sex=${sex}`;
     console.log(url);
     const response = await fetch(url);
     const body = await response.json();
@@ -120,8 +121,6 @@ const renderSearchProducts = products => {
         <br>
         <span>brand:${product.shopname}</span>
         <br>
-        <span>brand:color:${product.color}</span>
-        <br>
         <a href="${product.final_link}" target="_blank">${product.name}</a>
         <br>
         <span>${product.price}€</span>
@@ -162,34 +161,41 @@ const renderFavoriteProducts = products => {
 selectShow.addEventListener('change', async (event) => {
   show = event.target.value;
   page = 1;
-  let products = await fetchProducts(show=show, page=1, brand="", price="")
+  let products = await fetchProducts(show=show, page=1, brand="", price="",sex="")
   renderSearchProducts(products);
 });
 
 selectPage.addEventListener('change', async (event) => {
   page = event.target.value;
-  let products = await fetchProducts(show=12, page=page, brand="", price="")
+  let products = await fetchProducts(show=12, page=page, brand="", price="",sex="")
   renderSearchProducts(products);
 });
 
 selectBrand.addEventListener('change', async (event) => {
   brand = event.target.value;
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price="")
+  let products = await fetchProducts(show=show, page=page, brand=brand, price="",sex="")
+  renderSearchProducts(products);
+});
+
+selectSex.addEventListener('change', async (event) => {
+  sex = event.target.value;
+  page = 1;
+  let products = await fetchProducts(show=show, page=page, brand=brand, price="",sex="")
   renderSearchProducts(products);
 });
 
 selectPrice.addEventListener('change', async (event) => {
   price = event.target.value;
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand="", price=price)
+  let products = await fetchProducts(show=show, page=page, brand="", price=price,sex="")
   renderSearchProducts(products);
 });
 
 selectSort.addEventListener('change', async (event) => {
   sort = event.target.value;
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price=price)
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,sex="")
   renderSearchProducts(products);
 });
 
@@ -220,7 +226,21 @@ document.addEventListener('DOMContentLoaded', async () => {
   ).join('');
   
   selectBrand.innerHTML = brands;
+
+////////////////////////
+  const sex_category = await fetchBrands();
+  spanNbBrands.innerHTML = brand_names.length;
   
+  sex_names.unshift("All");
+  const sexes = Array.from(
+    sex_names,
+    value => `<option value="${value}">${value}</option>`
+  ).join('');
+
+  selectSex.innerHTML = sexes;
+  
+//////////////
+
   let products = await fetchProducts();
   renderSearchProducts(products);
 
