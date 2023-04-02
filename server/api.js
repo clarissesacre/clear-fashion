@@ -205,9 +205,9 @@ app.get('/products/price', async (request, response) => {
       script.brand = brand;
     }
 
-    /*if((for_who!="")){
+    if((for_who!="")){
       script.for_who = for_who;
-    }*/
+    }
       
     
     const count = await collection.countDocuments(script);
