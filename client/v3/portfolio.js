@@ -81,6 +81,19 @@ const fetchBrands = async () => {
   }
 };
 
+const fetchSex = async () => {
+  try {
+    const response = await fetch(
+      `http://localhost:8092/sex`
+    );
+    const body = await response.json();
+    return body;
+  } catch (error) {
+    console.error(error);
+    return currentProducts;
+  }
+};
+
 /**
  * Favorite products
  */
@@ -190,14 +203,14 @@ selectSex.addEventListener('change', async (event) => {
 selectPrice.addEventListener('change', async (event) => {
   price = event.target.value;
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand="", price=price,sex="")
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,sex=sex)
   renderSearchProducts(products);
 });
 
 selectSort.addEventListener('change', async (event) => {
   sort = event.target.value;
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,sex="")
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,sex=sex)
   renderSearchProducts(products);
 });
 
@@ -229,9 +242,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   selectBrand.innerHTML = brands;
 
-/*
-  const sex_category = await fetchBrands();
-  spanNbBrands.innerHTML = brand_names.length;
+  const sex_names = await fetchBrands();
+  //spanNbBrands.innerHTML = brand_names.length;
   
   sex_names.unshift("All");
   const sexes = Array.from(
@@ -241,7 +253,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   selectSex.innerHTML = sexes;
 
-*/
+
 
   let products = await fetchProducts();
   renderSearchProducts(products);
