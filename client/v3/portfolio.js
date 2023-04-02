@@ -230,7 +230,7 @@ selectPrice.addEventListener('change', async (event) => {
   // on remet direct la page à 1
   page = 1;
   // on appelle fetchproducts pour récupérer les produits avec les bon parametres
-  let products = await fetchProducts(show=show, page=page, brand="", price=price,for_who="")
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who)
   // pour l'affichage
   renderSearchProducts(products);
 });
@@ -241,7 +241,7 @@ selectBrand.addEventListener('change', async (event) => {
     brand="";
   }
   page = 1;
-  let products = await fetchProducts(show=show, page=page, brand=brand, price="",for_who="")
+  let products = await fetchProducts(show=show, page=page, brand=brand, price=price,for_who=for_who)
   renderSearchProducts(products);
 });
 
