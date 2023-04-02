@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const category_names = await fetchCategory();
   
-  sex_names.unshift("All");
+  category_names.unshift("All");
   const categories = Array.from(
     category_names,
     value => `<option value="${value}">${value}</option>`
