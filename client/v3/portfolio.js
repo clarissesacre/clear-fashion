@@ -178,12 +178,14 @@ selectBrand.addEventListener('change', async (event) => {
   renderSearchProducts(products);
 });
 
+/*
 selectSex.addEventListener('change', async (event) => {
   sex = event.target.value;
   page = 1;
   let products = await fetchProducts(show=show, page=page, brand=brand, price="",sex="")
   renderSearchProducts(products);
 });
+*/
 
 selectPrice.addEventListener('change', async (event) => {
   price = event.target.value;
@@ -227,7 +229,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   selectBrand.innerHTML = brands;
 
-////////////////////////
+/*
   const sex_category = await fetchBrands();
   spanNbBrands.innerHTML = brand_names.length;
   
@@ -238,8 +240,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   ).join('');
 
   selectSex.innerHTML = sexes;
-  
-//////////////
+
+*/
 
   let products = await fetchProducts();
   renderSearchProducts(products);
