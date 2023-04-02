@@ -39,6 +39,7 @@ const parse = data => {
         var color = $(element)
         .find('.color-variant')
         .attr('data-color');
+
         const shopname = 'circle';
 
         var link = $(element)
@@ -46,7 +47,11 @@ const parse = data => {
         .attr('href');
         final_link = "https://shop.circlesportswear.com" +link;
         
-        
+        var image = $(element)
+        .find('media media--transparent media--hover-effect')
+        .attr('srcsert');
+
+
       var for_who= '';
       var category= '';
       
@@ -67,7 +72,7 @@ const parse = data => {
       
       
 
-      return {shopname, name, color, price, for_who, category, final_link};
+      return {shopname, name, color, price, for_who, category, final_link, image};
     })
     .get();
 };
