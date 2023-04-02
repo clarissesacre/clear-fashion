@@ -11,6 +11,7 @@ const { Console } = require('console');
 function getClient() {
   const uri = "mongodb+srv://clarissesacre:clarisse@clusterclearfashion.7kttiwq.mongodb.net/test?retryWrites=true&w=majority";
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+  console.log(client);
   return client;
 }
 
